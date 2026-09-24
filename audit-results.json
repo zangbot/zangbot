@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Ollama endpoint reachable",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "2\n",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "Qwen2.5:7b model loaded",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "\"qwen2.5:7b\"\n",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "Phi3 model loaded",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "\"phi3:latest\"\n",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "Git SSH key present",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "-rw-------@ 1 zangbot  staff  432 Sep 23 18:36 /Users/zangbot/.ssh/id_ed25519\n",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "Git config set",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "Zangetsu\n",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "SSH known_hosts has github.com",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "2\n",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "SSH agent has key loaded",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "Bitwarden CLI installed",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "/opt/homebrew/bin/bw\n",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "Bitwarden vault accessible",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "SSH access to VPS",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "OK\n",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "Zangbot FastAPI router running",
+    "status": "FAIL",
+    "return_code": 0,
+    "output": "",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "Systemd service active",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "active\n",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "UniFi Cloud API key in Bitwarden",
+    "status": "TIMEOUT",
+    "error": "Connection timeout (10s)",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "UniFi Max device online",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "Vodia REST API reachable",
+    "status": "PASS",
+    "return_code": 0,
+    "output": "",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  },
+  {
+    "name": "Vodia credentials in vault",
+    "status": "TIMEOUT",
+    "error": "Connection timeout (10s)",
+    "timestamp": "2026-09-23T20:06:45.472089"
+  }
+]
