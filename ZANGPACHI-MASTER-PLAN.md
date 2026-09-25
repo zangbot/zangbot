@@ -802,6 +802,44 @@ sudo systemctl restart ssh
 
 ---
 
-*Last Updated: September 24, 2026*  
-*Hardware arrives: September 25, 2026*  
+---
+
+## Phase 9: Commercial Tech Integration *(Post Zangbot Rollout)*
+
+> **Note:** This phase is deferred until the full Zangbot platform is live and proven. Revisit after Phase 8 is complete.
+
+### Vision
+Expand from MSP + automation into full **commercial technology integrator**. Core stack is Zangbot (UniFi + Vodia + automation layer), but work with any client environment. Meet clients where they are — integrate what exists, modernize what doesn't.
+
+### Core Stack (What We Drop In)
+- **Networking:** UniFi — switches, APs, cameras, access control, gateways
+- **Communications:** Vodia PBX — VoIP, UC, call analytics
+- **Automation:** Zangbot layer — monitoring, alerting, AI-assisted ops
+
+### Integration Targets (Client Existing Gear)
+- Cisco / Meraki / Fortinet networks
+- Microsoft Teams / Zoom Rooms
+- Verkada / Genetec / Milestone / Hikvision cameras
+- Crestron / Extron / QSC / Biamp AV
+- HID / Lenel / Avigilon / Brivo access control
+- BACnet / KNX / DALI building automation
+
+### Target Certifications
+- UniFi Design & Installation
+- Vodia Certified Integrator
+- Crestron Programmer (DMC-T)
+- Dante Audio Certification
+- BICSI ICTS (Installer)
+- CompTIA Security+ (if not already held)
+
+### Commercial Verticals
+- **Office builds** — UC, AV, networking, access control as a package
+- **Retail** — POS network, cameras, guest WiFi, digital signage
+- **Healthcare** — HIPAA-compliant networking, nurse call integration
+- **Hospitality** — property management integration, guest WiFi, IPTV
+
+---
+
+*Last Updated: September 26, 2026*  
+*Hardware arrives: September 26, 2026*  
 *Owner: Zangetsu / zangpachi*
