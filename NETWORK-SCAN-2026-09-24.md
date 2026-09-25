@@ -94,7 +94,7 @@ Three Dropbear devices — the lightweight SSH daemon commonly used in embedded/
 | **192.168.5.10** | — | 22/tcp OpenSSH 10.3 | Standard Linux device/server |
 | **192.168.5.122** | g5-flex.localdomain | 80/tcp lighttpd, 443/tcp ssl/lighttpd | Google Pixel? Flex device? |
 | **192.168.5.102** | — | (none detected) | Dormant IoT device or printer |
-| **192.168.5.231** | — | 22/tcp ssh?, 80/tcp http?, 8000/tcp http-alt? | **Firewalled** — 443 filtered, SSH+HTTP open |
+|| **192.168.5.231** | — | 22/tcp ssh?, 80/tcp http?, 8000/tcp http-alt? + 21/23/25/110/445 | **Honeypot** — user-configured on M5 Max to catch network scanners. Intentionally exposed. Do NOT investigate.
 
 ---
 
@@ -124,11 +124,7 @@ Three Dropbear devices — the lightweight SSH daemon commonly used in embedded/
 
 ### ⚠️ Things to Note
 
-1. **Host 192.168.5.231** — firewalled but SSH (22) + HTTP (80) + HTTP-alt (8000) open. This could be:
-   - A device behind a restrictive firewall (UFW or iptables)
-   - The Hostinger VPS (72.62.97.23) on a local proxy? (unlikely)
-   - An internal server with partial exposure
-   - **Recommendation:** investigate this host
+1. **Host 192.168.5.231** — honeypot on M5 Max. User-configured to detect network scanners. Open ports 21/22/23/25/80/110/445 intentionally exposed. NOT a threat. Do NOT investigate.
 
 2. **Monitoring cluster (14-16)** — 3 identical nodes with Nagios NSCA. The NSCA port (8000) is open but this is standard for Nagios passive checks. Verify no Grafana web interface (port 3000) is exposed.
 
