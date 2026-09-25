@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zangbot — Field Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-surface: #111118;
+      --bg-elevated: #16161d;
+      --border: #1e1e28;
+      --border-hover: #2a2a38;
+      --ink: #e4e4e7;
+      --muted: #71717a;
+      --muted-dim: #52525b;
+      --accent: #C41E3A;
+      --accent-muted: rgba(196, 30, 58, 0.15);
+      --success: #22c55e;
+      --success-muted: rgba(34, 197, 94, 0.15);
+      --warning: #f59e0b;
+      --warning-muted: rgba(245, 158, 11, 0.15);
+      --info: #3b82f6;
+      --info-muted: rgba(59, 130, 246, 0.12);
+      --mono: 'IBM Plex Mono', monospace;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10, 10, 15, 0.9);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      max-width: 1000px; margin: 0 auto;
+      padding: 0 2rem; height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); }
+    .nav-logo { font-family: var(--mono); font-size: 16px; font-weight: 600; color: var(--accent); }
+    .nav-name { font-weight: 600; font-size: 0.875rem; }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 0.8rem; font-family: var(--mono); transition: color 0.15s; }
+    .nav-back:hover { color: var(--ink); }
+
+    /* ─── Header ─── */
+    .header {
+      max-width: 1000px; margin: 0 auto;
+      padding: 6rem 2rem 2rem;
+    }
+    .header-label {
+      font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.75rem;
+    }
+    .header h1 {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700; letter-spacing: -0.03em;
+      line-height: 1.1; margin-bottom: 0.75rem;
+    }
+    .header h1 span { color: var(--accent); }
+    .header-sub {
+      color: var(--muted); font-size: 1rem; max-width: 520px;
+      margin-bottom: 1.5rem;
+    }
+    .header-meta {
+      display: flex; align-items: center; gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-family: var(--mono); font-size: 0.72rem; color: var(--muted);
+    }
+    .meta-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    /* ─── Divider ─── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0 2rem; }
+
+    /* ─── Main ─── */
+    .main { max-width: 1000px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+
+    /* ─── Intro banner ─── */
+    .intro-banner {
+      background: var(--bg-surface); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px; padding: 1.25rem 1.5rem;
+      margin-bottom: 2.5rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+    }
+    .intro-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .intro-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .intro-text { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── Phase block ─── */
+    .phase-block { margin-bottom: 2.5rem; }
+    .phase-label {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .phase-num {
+      font-family: var(--mono); font-size: 0.65rem; font-weight: 600;
+      padding: 0.2rem 0.6rem; border-radius: 4px;
+      background: var(--accent-muted); color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .phase-title { font-size: 0.95rem; font-weight: 600; color: var(--ink); }
+    .phase-time { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); margin-left: auto; }
+
+    /* ─── Kit cards ─── */
+    .kit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.85rem;
+    }
+    .kit-card {
+      background: var(--bg-surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.1rem 1.25rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: border-color 0.15s;
+    }
+    .kit-card:hover { border-color: var(--border-hover); }
+    .kit-card.highlight { border-color: rgba(196,30,58,0.3); }
+    .kit-emoji { font-size: 1.6rem; flex-shrink: 0; line-height: 1; margin-top: 0.1rem; }
+    .kit-name { font-weight: 600; font-size: 0.875rem; margin-bottom: 0.2rem; }
+    .kit-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .kit-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.5rem; }
+    .ktag {
+      font-family: var(--mono); font-size: 0.6rem;
+      padding: 0.15rem 0.45rem; border-radius: 3px;
+      background: var(--bg-elevated); border: 1px solid var(--border);
+      color: var(--muted-dim);
+    }
+    .ktag.red { background: var(--accent-muted); border-color: rgba(196,30,58,0.2); color: var(--accent); }
+    .ktag.green { background: var(--success-muted); border-color: rgba(34,197,94,0.2); color: var(--success); }
+
+    /* ─── Capability table ─── */
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.6rem; margin-top: 1rem;
+    }
+    .cap-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.6rem 0.875rem;
+      background: var(--bg-surface); border: 1px solid var(--border);
+      border-radius: 6px; font-size: 0.8rem;
+    }
+    .cap-check { color: var(--success); font-size: 0.75rem; flex-shrink: 0; }
+
+    /* ─── Quote block ─── */
+    .quote-block {
+      background: var(--bg-surface); border: 1px solid var(--border);
+      border-left: 3px solid var(--success);
+      border-radius: 8px; padding: 1.25rem 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .quote-text { font-size: 0.95rem; color: var(--ink); font-style: italic; line-height: 1.7; margin-bottom: 0.5rem; }
+    .quote-attr { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); }
+
+    /* ─── Footer ─── */
+    footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; }
+    .footer-inner { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-left { font-size: 0.75rem; color: var(--muted-dim); }
+    .footer-links { display: flex; gap: 1.25rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.75rem; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.75rem; }
+      .kit-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <span class="nav-logo">基</span>
+      <span class="nav-name">Zangbot</span>
+    </a>
+    <a href="/" class="nav-back">← Back to zangbot.net</a>
+  </div>
+</nav>
+
+<div class="header">
+  <div class="header-label">On-Site Deployment</div>
+  <h1>Day One <span>Field Kit</span></h1>
+  <p class="header-sub">What walks in the door on a first visit. Network mapped, vulnerabilities flagged, and a full picture built — before most techs finish the paperwork.</p>
+  <div class="header-meta">
+    <div class="meta-item"><span class="meta-dot"></span> Active kit — September 2026</div>
+    <div class="meta-item">📍 Las Vegas, NV</div>
+    <div class="meta-item">⚡ Commercial deployments</div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="main">
+
+  <div class="intro-banner">
+    <div class="intro-icon">🎯</div>
+    <div>
+      <div class="intro-title">The approach</div>
+      <div class="intro-text">Most techs arrive, ask for the Wi-Fi password, and start clicking around. We arrive with automated recon already running, a live network map on a 4.3" screen, and every open port documented before the first conversation. The toolkit below is why.</div>
+    </div>
+  </div>
+
+  <!-- Phase 1 -->
+  <div class="phase-block">
+    <div class="phase-label">
+      <span class="phase-num">Arrives with you</span>
+      <span class="phase-title">The Hardware Kit</span>
+    </div>
+    <div class="kit-grid">
+
+      <div class="kit-card highlight">
+        <div class="kit-emoji">🥷</div>
+        <div>
+          <div class="kit-name">zangpachi</div>
+          <div class="kit-desc">Raspberry Pi 5 field agent. Plugs into client Ethernet, begins scanning immediately. Grafana dashboard live on the 4.3" touch screen.</div>
+          <div class="kit-tags">
+            <span class="ktag red">field agent</span>
+            <span class="ktag">Pi 5 · 8GB</span>
+            <span class="ktag">500GB NVMe</span>
+            <span class="ktag green">Tailscale home</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-card">
+        <div class="kit-emoji">👾</div>
+        <div>
+          <div class="kit-name">zangagotchi</div>
+          <div class="kit-desc">Passive Wi-Fi recon unit. Wanders the client site collecting WPA2 handshakes autonomously. Custom Pwnagotchi build on Pi Zero 2W.</div>
+          <div class="kit-tags">
+            <span class="ktag red">Wi-Fi recon</span>
+            <span class="ktag">handshake capture</span>
+            <span class="ktag">e-ink display</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-card">
+        <div class="kit-emoji">🐬</div>
+        <div>
+          <div class="kit-name">Flipper Zero</div>
+          <div class="kit-desc">Multi-tool in your pocket. Sub-GHz, NFC/RFID cloning, IR capture, BadUSB. Unleashed firmware. Wired to zangpachi via GPIO for scripted automation.</div>
+          <div class="kit-tags">
+            <span class="ktag">sub-GHz</span>
+            <span class="ktag">NFC/RFID</span>
+            <span class="ktag">IR</span>
+            <span class="ktag">BadUSB</span>
+            <span class="ktag red">Unleashed FW</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-card">
+        <div class="kit-emoji">📡</div>
+        <div>
+          <div class="kit-name">UniFi Travel Router</div>
+          <div class="kit-desc">Creates an isolated network segment on-site. VPN tunnels everything back to home base. Your tools stay on your network, not theirs.</div>
+          <div class="kit-tags">
+            <span class="ktag green">VPN tunnel</span>
+            <span class="ktag">isolated SSID</span>
+            <span class="ktag">client separation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-card">
+        <div class="kit-emoji">🖥️</div>
+        <div>
+          <div class="kit-name">zanmac-01 (remote)</div>
+          <div class="kit-desc">Mac Studio M5 Max back at HQ. Always connected via Tailscale. Heavy compute, Qwen2.5:7b inference, and full Hermes orchestration available from the field.</div>
+          <div class="kit-tags">
+            <span class="ktag">M5 Max · 64GB</span>
+            <span class="ktag green">Tailscale</span>
+            <span class="ktag">Qwen2.5:7b</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="kit-card">
+        <div class="kit-emoji">💻</div>
+        <div>
+          <div class="kit-name">zanglap-10124</div>
+          <div class="kit-desc">ASUS TUF A16 work laptop. Win11 Pro + Linux dual boot. Client-facing work, documentation, remote access, and the human interface to everything else.</div>
+          <div class="kit-tags">
+            <span class="ktag">Ryzen 7 · 32GB</span>
+            <span class="ktag">Win11 + Linux</span>
+            <span class="ktag">RX 7700S</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Phase 2 -->
+  <div class="phase-block">
+    <div class="phase-label">
+      <span class="phase-num">What zangpachi runs</span>
+      <span class="phase-title">Automated On Arrival</span>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-item"><span class="cap-check">✓</span> Full network host discovery</div>
+      <div class="cap-item"><span class="cap-check">✓</span> Open port scan (all devices)</div>
+      <div class="cap-item"><span class="cap-check">✓</span> Service version fingerprinting</div>
+      <div class="cap-item"><span class="cap-check">✓</span> CVE vulnerability scan (Nuclei)</div>
+      <div class="cap-item"><span class="cap-check">✓</span> Web app testing (Nikto)</div>
+      <div class="cap-item"><span class="cap-check">✓</span> SMB enumeration</div>
+      <div class="cap-item"><span class="cap-check">✓</span> Wireless network audit (Kismet)</div>
+      <div class="cap-item"><span class="cap-check">✓</span> Live traffic analysis (ntopng)</div>
+      <div class="cap-item"><span class="cap-check">✓</span> Packet capture (Wireshark/tshark)</div>
+      <div class="cap-item"><span class="cap-check">✓</span> Bandwidth by device (nethogs)</div>
+      <div class="cap-item"><span class="cap-check">✓</span> Grafana dashboard — live</div>
+      <div class="cap-item"><span class="cap-check">✓</span> Full report generated on exit</div>
+    </div>
+  </div>
+
+  <!-- Phase 3 -->
+  <div class="phase-block">
+    <div class="phase-label">
+      <span class="phase-num">What goes home with the data</span>
+      <span class="phase-title">After the Visit</span>
+    </div>
+    <div class="kit-grid">
+      <div class="kit-card">
+        <div class="kit-emoji">📊</div>
+        <div>
+          <div class="kit-name">Site Report</div>
+          <div class="kit-desc">Full network topology, device inventory, open ports, CVEs found, Wi-Fi security assessment. Delivered same day.</div>
+        </div>
+      </div>
+      <div class="kit-card">
+        <div class="kit-emoji">🔐</div>
+        <div>
+          <div class="kit-name">Wi-Fi Security Audit</div>
+          <div class="kit-desc">Handshakes collected by zangagotchi analyzed offline. Weak passwords flagged. Coverage gaps mapped.</div>
+        </div>
+      </div>
+      <div class="kit-card">
+        <div class="kit-emoji">🤖</div>
+        <div>
+          <div class="kit-name">AI-Assisted Analysis</div>
+          <div class="kit-desc">Scan results fed to local AI (Qwen2.5:7b or phi3:mini). Prioritized findings, plain-language explanations, recommended next steps.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-text">"Most MSPs show up and ask for the Wi-Fi password. We show up and already know your network better than you do."</div>
+    <div class="quote-attr">— Zangetsu, Zangbot</div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">© 2026 Zangbot · zangbot.net/field-kit</div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="https://github.com/zangbot" target="_blank">GitHub</a>
+      <a href="mailto:jdgnothing@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
