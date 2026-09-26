@@ -34,3 +34,22 @@ htmlcov/
 node_modules/
 .next/
 out/
+
+# === CREDENTIALS (NEVER COMMIT) ===
+*.env
+.env.*
+!.env.example
+
+# === DATABASE / RUNTIME ===
+*.db
+*.sqlite
+*.log
+chroma_db/
+vector_db/
+approvals.db
+
+# === SENSITIVE LOCAL FILES ===
+ZANGBOT-SESSION-CONTEXT.md
+*-session-context*
+security_audit_report.json
+

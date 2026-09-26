@@ -1,0 +1,36 @@
+[Unit]
+Description=Vodia Bot Service - PBX Automation
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=vodia-bot
+Group=vodia-bot
+WorkingDirectory=/opt/vodia-bot
+Environment=PATH=/opt/vodia-bot/venv/bin
+EnvironmentFile=/opt/vodia-bot/.env
+
+ExecStart=/opt/vodia-bot/venv/bin/gunicorn     --workers 2     --worker-class sync     --bind 0.0.0.0:8000     --timeout 30     --access-logfile /var/log/vodia-bot/access.log     --error-logfile /var/log/vodia-bot/error.log     vodia_bot_api:create_app()
+
+# Restart policy
+Restart=on-failure
+RestartSec=10
+StartLimitInterval=60
+StartLimitBurst=5
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/log/vodia-bot
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=vodia-bot
+
+[Install]
+WantedBy=multi-user.target
+
