@@ -1,171 +1,127 @@
 #!/usr/bin/env python3
 """
-Initialize Zangbot RAG vector database.
+Zangbot RAG - Infrastructure Knowledge Base
+=============================================
+Indexes reference guides into ChromaDB using fastembed (CPU-only, no torch).
+No langchain. No GPU. Runs on VPS fine.
 
-Indexes reference guides into a vector store for LLM-backed queries.
-Supports: Chroma, Pinecone, FAISS
-
-Phase 1: Load reference guides from disk
-Phase 2: Embed with local Mistral or OpenAI API
-Phase 3: Store in vector DB
-Phase 4: Query via RAG agent
+Usage:
+    python vector-db-init.py                    # index all guides
+    python vector-db-init.py --query "How do I reset a Vodia extension?"
 """
 
-import os
-import json
+import argparse
 from pathlib import Path
-from typing import Optional
 
-# Vector DB options (install as needed)
-try:
-    import chromadb
-    HAS_CHROMA = True
-except ImportError:
-    HAS_CHROMA = False
+import chromadb
+from chromadb.utils.embedding_functions import DefaultEmbeddingFunction
 
-try:
-    from langchain.document_loaders import DirectoryLoader
-    from langchain.text_splitter import MarkdownHeaderTextSplitter
-    HAS_LANGCHAIN = True
-except ImportError:
-    HAS_LANGCHAIN = False
+# ── Config ──────────────────────────────────────────────────────────────────
+REF_DIR      = Path(__file__).parent.parent / "reference-guides"
+DB_PATH      = Path(__file__).parent / "chroma_db"
+COL_NAME     = "zangbot_infrastructure"
+CHUNK_SIZE   = 800   # characters per chunk
+CHUNK_OVERLAP = 100  # overlap between chunks
 
 
-class ZangbotRAG:
-    """RAG system for Zangbot infrastructure knowledge."""
-    
-    def __init__(self, ref_dir: str = "../reference-guides", db_path: str = "./chroma_db"):
-        """
-        Args:
-            ref_dir: Path to reference guides
-            db_path: Path to Chroma vector DB
-        """
-        self.ref_dir = Path(ref_dir)
-        self.db_path = db_path
-        self.client = None
-        self.collection = None
-        
-    def load_references(self) -> list[dict]:
-        """Load reference guides from disk."""
-        docs = []
-        
-        if not self.ref_dir.exists():
-            print(f"Reference directory not found: {self.ref_dir}")
-            return docs
-            
-        for guide_file in self.ref_dir.glob("**/*.md"):
-            if guide_file.name == "INDEX.md":
+def load_guides(ref_dir: Path) -> list[dict]:
+    """Walk reference-guides/, read every .md, split into overlapping chunks."""
+    docs = []
+    for md_file in sorted(ref_dir.glob("**/*.md")):
+        if md_file.name == "INDEX.md":
+            continue
+        text = md_file.read_text(encoding="utf-8")
+        category = md_file.parent.name
+        for i, start in enumerate(range(0, len(text), CHUNK_SIZE - CHUNK_OVERLAP)):
+            chunk = text[start : start + CHUNK_SIZE]
+            if len(chunk) < 50:
                 continue
-                
-            with open(guide_file, 'r') as f:
-                content = f.read()
-                docs.append({
-                    "id": guide_file.stem,
-                    "source": str(guide_file),
-                    "category": guide_file.parent.name,
-                    "content": content
-                })
-        
-        print(f"Loaded {len(docs)} reference guides")
-        return docs
-    
-    def initialize_chroma(self):
-        """Initialize Chroma vector DB."""
-        if not HAS_CHROMA:
-            print("ERROR: Chroma not installed. Run: pip install chromadb")
-            return False
-        
-        # Create persistent client
-        self.client = chromadb.PersistentClient(path=self.db_path)
-        
-        # Create or get collection
-        self.collection = self.client.get_or_create_collection(
-            name="zangbot_infrastructure",
-            metadata={"hnsw:space": "cosine"}
+            docs.append({
+                "id":       f"{md_file.stem}_chunk{i}",
+                "content":  chunk,
+                "source":   str(md_file.relative_to(ref_dir.parent)),
+                "category": category,
+                "file":     md_file.name,
+            })
+    return docs
+
+
+def get_collection(db_path: Path):
+    """Return persistent ChromaDB collection (creates if missing)."""
+    client = chromadb.PersistentClient(path=str(db_path))
+    return client.get_or_create_collection(
+        name=COL_NAME,
+        metadata={"hnsw:space": "cosine"},
+        embedding_function=DefaultEmbeddingFunction(),
+    )
+
+
+def index(ref_dir: Path, db_path: Path) -> bool:
+    """Load -> embed -> store pipeline."""
+    print("Zangbot RAG - Indexing reference guides")
+    print(f"   Source : {ref_dir}")
+    print(f"   DB     : {db_path}")
+    print("-" * 48)
+
+    docs = load_guides(ref_dir)
+    if not docs:
+        print("No .md files found - check reference-guides path")
+        return False
+    print(f"   Loaded {len(docs)} chunks")
+
+    collection = get_collection(db_path)
+
+    # Upsert in batches - avoids memory spikes on VPS
+    batch_size = 50
+    for start in range(0, len(docs), batch_size):
+        batch = docs[start : start + batch_size]
+        collection.upsert(
+            ids=       [d["id"]      for d in batch],
+            documents= [d["content"] for d in batch],
+            metadatas= [{"source": d["source"], "category": d["category"], "file": d["file"]}
+                        for d in batch],
         )
-        
-        print(f"Initialized Chroma DB at {self.db_path}")
-        return True
-    
-    def index_documents(self, docs: list[dict]) -> bool:
-        """Add documents to vector store."""
-        if not self.collection:
-            print("ERROR: Vector DB not initialized")
-            return False
-        
-        # For now, store metadata + raw content
-        # Full embedding happens when we wire up LLM backend
-        for doc in docs:
-            try:
-                self.collection.add(
-                    ids=[doc["id"]],
-                    documents=[doc["content"]],
-                    metadatas=[{
-                        "source": doc["source"],
-                        "category": doc["category"]
-                    }]
-                )
-            except Exception as e:
-                print(f"Failed to index {doc['id']}: {e}")
-                return False
-        
-        print(f"Indexed {len(docs)} documents in vector store")
-        return True
-    
-    def query(self, query: str, n_results: int = 3) -> list[dict]:
-        """Query the RAG system."""
-        if not self.collection:
-            return []
-        
-        results = self.collection.query(
-            query_texts=[query],
-            n_results=n_results
-        )
-        
-        formatted = []
-        if results and results["documents"]:
-            for i, doc in enumerate(results["documents"][0]):
-                formatted.append({
-                    "content": doc,
-                    "metadata": results["metadatas"][0][i] if results["metadatas"] else {}
-                })
-        
-        return formatted
-    
-    def run(self) -> bool:
-        """Full pipeline: load → index → ready."""
-        print("🚀 Zangbot RAG Initialization")
+        print(f"   Indexed chunks {start+1}-{start+len(batch)}")
+
+    print("-" * 48)
+    print(f"Done - {collection.count()} chunks in ChromaDB at {db_path}")
+    return True
+
+
+def query(question: str, db_path: Path, n: int = 3):
+    """Query the RAG - returns top-n relevant chunks."""
+    collection = get_collection(db_path)
+    results = collection.query(query_texts=[question], n_results=n)
+
+    if not results or not results["documents"][0]:
+        print("No results found.")
+        return
+
+    print(f"\nQuery: {question}")
+    print("=" * 48)
+    for i, (doc, meta) in enumerate(zip(results["documents"][0], results["metadatas"][0]), 1):
+        print(f"\n[{i}] {meta.get('source', '?')}  (category: {meta.get('category', '?')})")
         print("-" * 40)
-        
-        # Step 1: Load references
-        docs = self.load_references()
-        if not docs:
-            print("No references to index")
-            return False
-        
-        # Step 2: Initialize vector DB
-        if not self.initialize_chroma():
-            return False
-        
-        # Step 3: Index documents
-        if not self.index_documents(docs):
-            return False
-        
-        print("-" * 40)
-        print("✓ RAG system ready")
-        print(f"Query example: rag.query('How do I configure UniFi VLAN?')")
-        return True
+        print(doc[:400])
+        if len(doc) > 400:
+            print("  ...")
 
 
 if __name__ == "__main__":
-    rag = ZangbotRAG()
-    success = rag.run()
-    
-    if success:
-        # Test query
-        print("\n📖 Test Query")
-        results = rag.query("How do I reset a Vodia extension?")
-        for i, result in enumerate(results, 1):
-            source = result["metadata"].get("source", "unknown")
-            print(f"\n  [{i}] {source}")
-            print(f"      {result['content'][:200]}...")
+    parser = argparse.ArgumentParser(description="Zangbot RAG")
+    parser.add_argument("--query",   "-q", default=None, help="Ask a question")
+    parser.add_argument("--ref-dir", default=str(REF_DIR))
+    parser.add_argument("--db-path", default=str(DB_PATH))
+    parser.add_argument("--results", "-n", type=int, default=3)
+    args = parser.parse_args()
+
+    ref = Path(args.ref_dir)
+    db  = Path(args.db_path)
+
+    if args.query:
+        query(args.query, db, args.results)
+    else:
+        ok = index(ref, db)
+        if ok:
+            print("\nRunning test query...")
+            query("How do I configure UniFi webhooks?", db)
