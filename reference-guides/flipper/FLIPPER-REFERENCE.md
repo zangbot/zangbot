@@ -120,6 +120,23 @@ All use is on authorized systems only — client networks with written permissio
 
 ---
 
+## Flashing Marauder — Lessons Learned
+
+- Use **justcallmekoko.github.io/MarauderInstaller/** — select "Flipper Zero WiFi Dev Board"
+- Requires **Chrome/Edge/Brave** — Web Serial API. Safari and Firefox won't work
+- Mac defaults to Safari — flash from Windows PC with Chrome or install Chrome on Mac
+- Board must be in **bootloader mode** before connecting:
+  1. Hold BOOT button
+  2. Press + release RESET
+  3. Release BOOT
+  - No lights in bootloader mode = normal ✅
+- Mac sees it as `/dev/cu.usbmodemSN234567892` when in bootloader mode
+- Flipper itself shows as `/dev/cu.usbmodemflip_O0td1` (separate device)
+- Select `SN234567892` port in the browser popup — not the Flipper port
+- Don't unplug during flash — takes 2-5 min
+
+---
+
 ## TODO
 
 - [ ] Find Wi-Fi dev board (ESP32)
