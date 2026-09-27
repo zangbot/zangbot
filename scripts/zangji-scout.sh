@@ -36,9 +36,12 @@ nmap -sn "$SUBNET" -oN "$OUTDIR/01-hosts.txt" 2>/dev/null
 HOSTCOUNT=$(grep 'Host is up' "$OUTDIR/01-hosts.txt" | wc -l)
 echo "  ✓ $HOSTCOUNT hosts found"
 
-# ── 3. PORT SCAN TOP 1000 ────────────────────────────────────
+# ── 3. PORT SCAN TOP 1000 ────────────────────────────────────────
 echo ""
 echo "[3/6] Port scan top 1000 ports on live hosts..."
+echo "  NOTE: T4 aggressive timing is intentional."
+echo "  Reveals: IDS/EDR detection, firewall rules, user/staff response to alerts."
+echo "  If nothing fires — that is a finding: undetected aggressive scan."
 nmap -sV --open -T4 "$SUBNET" -oN "$OUTDIR/02-ports.txt" 2>/dev/null
 OPENPORTS=$(grep 'open' "$OUTDIR/02-ports.txt" | grep -v 'nmap\|#' | wc -l)
 echo "  ✓ $OPENPORTS open ports found"
@@ -60,13 +63,22 @@ echo ""
 echo "[6/6] Generating summary..."
 cat > "$OUTDIR/SUMMARY.txt" << EOF
 ================================================
- ZANGJI-3B FIELD SCOUT REPORT
+ ZANGBOT FIELD SCOUT REPORT
  Date: $(date)
  Subnet: $SUBNET
+ Scanner: zangji-3b
 ================================================
 
 HOSTS ONLINE: $HOSTCOUNT
 OPEN PORTS:   $OPENPORTS
+SCAN TIMING:  T4 aggressive (intentional)
+
+DETECTION ASSESSMENT:
+  [ ] Client EDR/AV fired during scan
+  [ ] IDS/IPS alert triggered
+  [ ] Staff reported warning to IT
+  [ ] No detection observed — FINDING: aggressive scan went unnoticed
+  Notes: _______________________________________________
 
 TOP FINDINGS:
 $(grep -E 'open|WARNING|VULNERABLE' "$OUTDIR/04-vulns.txt" | grep -v '#' | head -30)
