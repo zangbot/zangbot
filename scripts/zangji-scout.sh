@@ -55,7 +55,9 @@ echo "  ✓ service fingerprint complete"
 # ── 5. COMMON VULNS (safe scripts) ───────────────────────────
 echo ""
 echo "[5/6] Running safe NSE scripts (vuln, default)..."
-nmap --script="default,vuln" -T4 "$SUBNET" -oN "$OUTDIR/04-vulns.txt" 2>/dev/null
+echo "  NOTE: This is the slowest phase — 20-30min on a busy /24."
+echo "  Timeout: 25 min. Kill with Ctrl+C if needed, results so far are saved."
+timeout 1500 nmap --script="default,vuln" -T4 "$SUBNET" -oN "$OUTDIR/04-vulns.txt" 2>/dev/null || echo "  ⚠ vuln scan timed out or interrupted — partial results saved"
 echo "  ✓ script scan complete"
 
 # ── 6. SUMMARY REPORT ────────────────────────────────────────
