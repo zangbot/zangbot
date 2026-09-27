@@ -1,0 +1,996 @@
+# Nmap 7.95 scan initiated Sun Sep 27 15:20:49 2026 as: nmap -sV -O --osscan-guess -T4 -oN /home/zangetsu/scans/20260927-1515/03-services.txt 192.168.5.0/24
+Nmap scan report for unifi.localdomain (192.168.5.1)
+Host is up (0.015s latency).
+Not shown: 990 closed tcp ports (reset)
+PORT     STATE SERVICE             VERSION
+53/tcp   open  domain              dnsmasq UNKNOWN
+80/tcp   open  http                nginx
+443/tcp  open  ssl/http            nginx
+2601/tcp open  zebra               Quagga routing software
+2604/tcp open  zebra               Quagga routing software
+6666/tcp open  ssl/irc?
+6789/tcp open  ibm-db2-admin?
+7443/tcp open  ssl/oracleas-https?
+8080/tcp open  http                Apache Tomcat (language: en)
+8443/tcp open  ssl/http            Apache Tomcat (language: en)
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port6666-TCP:V=7.95%T=SSL%I=7%D=9/27%Time=6AB9973A%P=aarch64-unknown-li
+SF:nux-gnu%r(GetRequest,BF,"HTTP/1\.0\x20404\x20Not\x20Found\r\nvary:\x20o
+SF:rigin,\x20access-control-request-method,\x20access-control-request-head
+SF:ers\r\naccess-control-allow-origin:\x20\*\r\ncontent-length:\x200\r\nda
+SF:te:\x20Sun,\x2027\x20Sep\x202026\x2022:22:50\x20GMT\r\n\r\n")%r(HTTPOpt
+SF:ions,FA,"HTTP/1\.0\x20200\x20OK\r\naccess-control-allow-origin:\x20\*\r
+SF:\nvary:\x20origin,\x20access-control-request-method,\x20access-control-
+SF:request-headers\r\naccess-control-allow-methods:\x20\*\r\naccess-contro
+SF:l-allow-headers:\x20\*\r\ncontent-length:\x200\r\ndate:\x20Sun,\x2027\x
+SF:20Sep\x202026\x2022:22:50\x20GMT\r\n\r\n")%r(RTSPRequest,67,"HTTP/1\.1\
+SF:x20400\x20Bad\x20Request\r\nconnection:\x20close\r\ncontent-length:\x20
+SF:0\r\ndate:\x20Sun,\x2027\x20Sep\x202026\x2022:22:51\x20GMT\r\n\r\n")%r(
+SF:RPCCheck,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nconnection:\x20close
+SF:\r\ncontent-length:\x200\r\ndate:\x20Sun,\x2027\x20Sep\x202026\x2022:22
+SF::51\x20GMT\r\n\r\n")%r(DNSVersionBindReqTCP,67,"HTTP/1\.1\x20400\x20Bad
+SF:\x20Request\r\nconnection:\x20close\r\ncontent-length:\x200\r\ndate:\x2
+SF:0Sun,\x2027\x20Sep\x202026\x2022:22:51\x20GMT\r\n\r\n")%r(DNSStatusRequ
+SF:estTCP,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nconnection:\x20close\r
+SF:\ncontent-length:\x200\r\ndate:\x20Sun,\x2027\x20Sep\x202026\x2022:22:5
+SF:1\x20GMT\r\n\r\n")%r(Help,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncon
+SF:nection:\x20close\r\ncontent-length:\x200\r\ndate:\x20Sun,\x2027\x20Sep
+SF:\x202026\x2022:22:51\x20GMT\r\n\r\n")%r(SSLSessionReq,67,"HTTP/1\.1\x20
+SF:400\x20Bad\x20Request\r\nconnection:\x20close\r\ncontent-length:\x200\r
+SF:\ndate:\x20Sun,\x2027\x20Sep\x202026\x2022:22:51\x20GMT\r\n\r\n")%r(Ter
+SF:minalServerCookie,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nconnection:
+SF:\x20close\r\ncontent-length:\x200\r\ndate:\x20Sun,\x2027\x20Sep\x202026
+SF:\x2022:22:51\x20GMT\r\n\r\n")%r(TLSSessionReq,67,"HTTP/1\.1\x20400\x20B
+SF:ad\x20Request\r\nconnection:\x20close\r\ncontent-length:\x200\r\ndate:\
+SF:x20Sun,\x2027\x20Sep\x202026\x2022:22:51\x20GMT\r\n\r\n")%r(Kerberos,67
+SF:,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nconnection:\x20close\r\ncontent
+SF:-length:\x200\r\ndate:\x20Sun,\x2027\x20Sep\x202026\x2022:22:51\x20GMT\
+SF:r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port7443-TCP:V=7.95%T=SSL%I=7%D=9/27%Time=6AB99726%P=aarch64-unknown-li
+SF:nux-gnu%r(GetRequest,28F,"HTTP/1\.1\x20302\x20Found\r\nCross-Origin-Res
+SF:ource-Policy:\x20same-site\r\nOrigin-Agent-Cluster:\x20\?1\r\nReferrer-
+SF:Policy:\x20strict-origin-when-cross-origin\r\nStrict-Transport-Security
+SF::\x20max-age=31536000;\x20includeSubDomains\r\nX-Content-Type-Options:\
+SF:x20nosniff\r\nX-DNS-Prefetch-Control:\x20off\r\nX-Download-Options:\x20
+SF:noopen\r\nX-Frame-Options:\x20SAMEORIGIN\r\nX-Permitted-Cross-Domain-Po
+SF:licies:\x20none\r\nX-XSS-Protection:\x200\r\nVary:\x20Origin,\x20Accept
+SF:\r\nAccess-Control-Allow-Credentials:\x20true\r\nLocation:\x20https://u
+SF:ndefined:443/protect\r\nContent-Type:\x20text/plain;\x20charset=utf-8\r
+SF:\nContent-Length:\x2051\r\nDate:\x20Sun,\x2027\x20Sep\x202026\x2022:22:
+SF:30\x20GMT\r\nConnection:\x20close\r\n\r\nFound\.\x20Redirecting\x20to\x
+SF:20https://undefined:443/protect")%r(HTTPOptions,282,"HTTP/1\.1\x20204\x
+SF:20No\x20Content\r\nCross-Origin-Resource-Policy:\x20same-site\r\nOrigin
+SF:-Agent-Cluster:\x20\?1\r\nReferrer-Policy:\x20strict-origin-when-cross-
+SF:origin\r\nStrict-Transport-Security:\x20max-age=31536000;\x20includeSub
+SF:Domains\r\nX-Content-Type-Options:\x20nosniff\r\nX-DNS-Prefetch-Control
+SF::\x20off\r\nX-Download-Options:\x20noopen\r\nX-Frame-Options:\x20SAMEOR
+SF:IGIN\r\nX-Permitted-Cross-Domain-Policies:\x20none\r\nX-XSS-Protection:
+SF:\x200\r\nVary:\x20Origin,\x20Access-Control-Request-Headers\r\nAccess-C
+SF:ontrol-Allow-Credentials:\x20true\r\nAccess-Control-Allow-Methods:\x20G
+SF:ET,HEAD,PUT,PATCH,POST,DELETE\r\nAccess-Control-Max-Age:\x203600\r\nCon
+SF:tent-Length:\x200\r\nDate:\x20Sun,\x2027\x20Sep\x202026\x2022:22:36\x20
+SF:GMT\r\nConnection:\x20close\r\n\r\n")%r(RTSPRequest,282,"HTTP/1\.1\x202
+SF:04\x20No\x20Content\r\nCross-Origin-Resource-Policy:\x20same-site\r\nOr
+SF:igin-Agent-Cluster:\x20\?1\r\nReferrer-Policy:\x20strict-origin-when-cr
+SF:oss-origin\r\nStrict-Transport-Security:\x20max-age=31536000;\x20includ
+SF:eSubDomains\r\nX-Content-Type-Options:\x20nosniff\r\nX-DNS-Prefetch-Con
+SF:trol:\x20off\r\nX-Download-Options:\x20noopen\r\nX-Frame-Options:\x20SA
+SF:MEORIGIN\r\nX-Permitted-Cross-Domain-Policies:\x20none\r\nX-XSS-Protect
+SF:ion:\x200\r\nVary:\x20Origin,\x20Access-Control-Request-Headers\r\nAcce
+SF:ss-Control-Allow-Credentials:\x20true\r\nAccess-Control-Allow-Methods:\
+SF:x20GET,HEAD,PUT,PATCH,POST,DELETE\r\nAccess-Control-Max-Age:\x203600\r\
+SF:nContent-Length:\x200\r\nDate:\x20Sun,\x2027\x20Sep\x202026\x2022:22:36
+SF:\x20GMT\r\nConnection:\x20close\r\n\r\n");
+MAC Address: 0E:EA:14:39:D1:D6 (Unknown)
+Device type: phone|general purpose|router
+Running (JUST GUESSING): Google Android 12.X|10.X|11.X (96%), Linux 5.X|4.X|3.X|2.6.X (96%), Ubiquiti embedded (96%)
+OS CPE: cpe:/o:google:android:12 cpe:/o:linux:linux_kernel:5.4 cpe:/o:linux:linux_kernel:4 cpe:/o:google:android:10 cpe:/o:google:android:11 cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:5 cpe:/o:linux:linux_kernel:2.6
+Aggressive OS guesses: Android 12 (Linux 5.4) (96%), Android 10 - 12 (Linux 4.14 - 4.19) (96%), Linux 3.2 - 4.14 (96%), Linux 4.15 - 5.19 (96%), Linux 2.6.32 - 3.10 (96%), Linux 5.10 - 5.19 (96%), Ubiquiti Dream Machine Pro gateway (Linux 4.19) (96%), Oracle VM Server 3.4.2 (Linux 4.1) (96%), Android 10 - 11 (Linux 4.14) (95%), Symantec Web Gateway 5.2.0.361 (Linux 2.6) (94%)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=9/27%OT=53%CT=1%CU=38617%PV=Y%DS=1%DC=D%G=Y%M=0EEA14%T
+OS:M=6AB99845%P=aarch64-unknown-linux-gnu)SEQ(SP=100%GCD=3%ISR=10B%TI=Z%CI=
+OS:Z%II=I%TS=A)SEQ(SP=103%GCD=1%ISR=10D%TI=Z%CI=Z%II=I%TS=A)SEQ(SP=106%GCD=
+OS:1%ISR=10A%TI=Z%CI=Z%II=I%TS=A)SEQ(SP=107%GCD=1%ISR=10E%TI=Z%CI=Z%TS=A)SE
+OS:Q(SP=108%GCD=1%ISR=10E%TI=Z%CI=Z%II=I%TS=A)OPS(O1=M5B4ST11NWA%O2=M5B4ST1
+OS:1NWA%O3=M5B4NNT11NWA%O4=M5B4ST11NWA%O5=M5B4ST11NWA%O6=M5B4ST11)WIN(W1=A9
+OS:B0%W2=A9B0%W3=A9B0%W4=A9B0%W5=A9B0%W6=A9B0)ECN(R=Y%DF=Y%T=40%W=A564%O=M5
+OS:B4NNSNWA%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4
+OS:(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%
+OS:F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%
+OS:T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%R
+OS:ID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Network Distance: 1 hop
+
+Nmap scan report for 192.168.5.2
+Host is up (0.029s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     Dropbear sshd 2025.89 (protocol 2.0)
+MAC Address: 9C:05:D6:E5:91:69 (Ubiquiti)
+Device type: general purpose
+Running: Linux 3.X|4.X
+OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+OS details: Linux 3.2 - 4.14
+Network Distance: 1 hop
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Nmap scan report for 192.168.5.3
+Host is up (0.017s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     Dropbear sshd (protocol 2.0)
+MAC Address: 28:70:4E:5D:FE:21 (Ubiquiti)
+Device type: general purpose
+Running: Linux 5.X
+OS CPE: cpe:/o:linux:linux_kernel:5.4
+OS details: OpenWrt 21.02 (Linux 5.4)
+Network Distance: 1 hop
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Nmap scan report for 192.168.5.5
+Host is up (0.022s latency).
+Not shown: 992 filtered tcp ports (no-response)
+PORT     STATE SERVICE       VERSION
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp  open  microsoft-ds?
+2869/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+3389/tcp open  ms-wbt-server
+5357/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+5800/tcp open  vnc-http      TightVNC (user: zangetsu-42023; VNC TCP port: 5900)
+5900/tcp open  vnc           VNC (protocol 3.8)
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port3389-TCP:V=7.95%I=7%D=9/27%Time=6AB99725%P=aarch64-unknown-linux-gn
+SF:u%r(TerminalServerCookie,13,"\x03\0\0\x13\x0e\xd0\0\0\x124\0\x02/\x08\0
+SF:\x02\0\0\0");
+MAC Address: 04:7C:16:5A:94:6F (Micro-Star Intl)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose|phone|specialized
+Running (JUST GUESSING): Microsoft Windows 11|10|2022|2008|Phone|7 (96%)
+OS CPE: cpe:/o:microsoft:windows_11 cpe:/o:microsoft:windows_10 cpe:/o:microsoft:windows_server_2022 cpe:/o:microsoft:windows_server_2008::sp1 cpe:/o:microsoft:windows cpe:/o:microsoft:windows_7
+Aggressive OS guesses: Microsoft Windows 11 21H2 (96%), Microsoft Windows 10 (91%), Microsoft Windows 10 1607 (91%), Microsoft Windows Server 2022 (90%), Microsoft Windows Server 2008 SP1 (88%), Microsoft Windows Phone 7.5 or 8.0 (88%), Microsoft Windows Embedded Standard 7 (87%), Microsoft Windows 10 1511 - 1607 (86%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Nmap scan report for 192.168.5.10
+Host is up (0.021s latency).
+Not shown: 994 closed tcp ports (reset)
+PORT     STATE SERVICE       VERSION
+22/tcp   open  ssh           OpenSSH 10.3 (protocol 2.0)
+88/tcp   open  kerberos-sec  Heimdal Kerberos (server time: 2026-09-27 22:22:24Z)
+445/tcp  open  microsoft-ds?
+5000/tcp open  rtsp
+5900/tcp open  vnc           Apple remote desktop vnc
+7000/tcp open  rtsp
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5000-TCP:V=7.95%I=7%D=9/27%Time=6AB99720%P=aarch64-unknown-linux-gn
+SF:u%r(GetRequest,8F,"HTTP/1\.1\x20403\x20Forbidden\r\nContent-Length:\x20
+SF:0\r\nServer:\x20AirTunes/980\.77\.5\r\nX-Apple-ProcessingTime:\x200\r\n
+SF:X-Apple-RequestReceivedTimestamp:\x2034430129\r\n\r\n")%r(RTSPRequest,8
+SF:F,"RTSP/1\.0\x20403\x20Forbidden\r\nContent-Length:\x200\r\nServer:\x20
+SF:AirTunes/980\.77\.5\r\nX-Apple-ProcessingTime:\x200\r\nX-Apple-RequestR
+SF:eceivedTimestamp:\x2034430220\r\n\r\n")%r(HTTPOptions,8F,"HTTP/1\.1\x20
+SF:403\x20Forbidden\r\nContent-Length:\x200\r\nServer:\x20AirTunes/980\.77
+SF:\.5\r\nX-Apple-ProcessingTime:\x200\r\nX-Apple-RequestReceivedTimestamp
+SF::\x2034435226\r\n\r\n")%r(FourOhFourRequest,8F,"HTTP/1\.1\x20403\x20For
+SF:bidden\r\nContent-Length:\x200\r\nServer:\x20AirTunes/980\.77\.5\r\nX-A
+SF:pple-ProcessingTime:\x200\r\nX-Apple-RequestReceivedTimestamp:\x2034435
+SF:248\r\n\r\n")%r(SIPOptions,8F,"RTSP/1\.0\x20403\x20Forbidden\r\nContent
+SF:-Length:\x200\r\nServer:\x20AirTunes/980\.77\.5\r\nX-Apple-ProcessingTi
+SF:me:\x200\r\nX-Apple-RequestReceivedTimestamp:\x2034435282\r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port7000-TCP:V=7.95%I=7%D=9/27%Time=6AB99725%P=aarch64-unknown-linux-gn
+SF:u%r(RTSPRequest,8F,"RTSP/1\.0\x20403\x20Forbidden\r\nContent-Length:\x2
+SF:00\r\nServer:\x20AirTunes/980\.77\.5\r\nX-Apple-ProcessingTime:\x200\r\
+SF:nX-Apple-RequestReceivedTimestamp:\x2034429982\r\n\r\n")%r(GetRequest,8
+SF:F,"HTTP/1\.1\x20403\x20Forbidden\r\nContent-Length:\x200\r\nServer:\x20
+SF:AirTunes/980\.77\.5\r\nX-Apple-ProcessingTime:\x200\r\nX-Apple-RequestR
+SF:eceivedTimestamp:\x2034435028\r\n\r\n")%r(HTTPOptions,8F,"HTTP/1\.1\x20
+SF:403\x20Forbidden\r\nContent-Length:\x200\r\nServer:\x20AirTunes/980\.77
+SF:\.5\r\nX-Apple-ProcessingTime:\x200\r\nX-Apple-RequestReceivedTimestamp
+SF::\x2034435066\r\n\r\n")%r(FourOhFourRequest,8F,"HTTP/1\.1\x20403\x20For
+SF:bidden\r\nContent-Length:\x200\r\nServer:\x20AirTunes/980\.77\.5\r\nX-A
+SF:pple-ProcessingTime:\x200\r\nX-Apple-RequestReceivedTimestamp:\x2034435
+SF:103\r\n\r\n")%r(SIPOptions,8F,"RTSP/1\.0\x20403\x20Forbidden\r\nContent
+SF:-Length:\x200\r\nServer:\x20AirTunes/980\.77\.5\r\nX-Apple-ProcessingTi
+SF:me:\x200\r\nX-Apple-RequestReceivedTimestamp:\x2034435171\r\n\r\n");
+MAC Address: BC:89:C1:E2:C0:42 (Unknown)
+Device type: general purpose
+Running: Apple macOS 11.X|12.X|13.X
+OS CPE: cpe:/o:apple:mac_os_x:11 cpe:/o:apple:mac_os_x:12 cpe:/o:apple:mac_os_x:13
+OS details: Apple macOS 11 (Big Sur) - 13 (Ventura) or iOS 16 (Darwin 20.6.0 - 22.4.0)
+Network Distance: 1 hop
+Service Info: OS: Mac OS X; CPE: cpe:/o:apple:mac_os_x
+
+Nmap scan report for 192.168.5.14
+Host is up (0.021s latency).
+Not shown: 975 closed tcp ports (reset)
+PORT      STATE SERVICE           VERSION
+22/tcp    open  ssh               OpenSSH 8.2 (protocol 2.0)
+53/tcp    open  domain            (unknown banner: DNSServer)
+80/tcp    open  http              nginx
+88/tcp    open  kerberos-sec      (server time: 2026-09-27 22:22:24Z)
+135/tcp   open  msrpc             Microsoft Windows RPC
+139/tcp   open  netbios-ssn       Samba smbd 4
+389/tcp   open  ldap              (Anonymous bind OK)
+443/tcp   open  ssl/http          nginx
+445/tcp   open  netbios-ssn       Samba smbd 4
+464/tcp   open  kpasswd5?
+554/tcp   open  rtsp              D-Link DCS-2130 or Pelco IDE10DN webcam rtspd
+636/tcp   open  ldapssl?
+1024/tcp  open  msrpc             Microsoft Windows RPC
+1935/tcp  open  rtmp?
+3261/tcp  open  winshadow?
+3268/tcp  open  ldap              (Anonymous bind OK)
+3269/tcp  open  globalcatLDAPssl?
+5000/tcp  open  http              nginx
+5001/tcp  open  ssl/http          nginx
+5357/tcp  open  http              nginx
+5566/tcp  open  westec-connect?
+8000/tcp  open  nagios-nsca       Nagios NSCA
+8088/tcp  open  http              Apache Tomcat (language: en)
+9000/tcp  open  http              Golang net/http server
+32768/tcp open  mongodb           MongoDB 3.6 after 3.6.3, or 3.7.3 or later
+4 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port53-TCP:V=7.95%I=7%D=9/27%Time=6AB99725%P=aarch64-unknown-linux-gnu%
+SF:r(DNSVersionBindReqTCP,36,"\x004\0\x06\x85\0\0\x01\0\x01\0\0\0\0\x07ver
+SF:sion\x04bind\0\0\x10\0\x03\xc0\x0c\0\x10\0\x03\0\0\0\0\0\n\tDNSServer");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port88-TCP:V=7.95%I=7%D=9/27%Time=6AB99725%P=aarch64-unknown-linux-gnu%
+SF:r(Kerberos,68,"\0\0\0d~b0`\xa0\x03\x02\x01\x05\xa1\x03\x02\x01\x1e\xa4\
+SF:x11\x18\x0f20260927222224Z\xa5\x05\x02\x03\tB\"\xa6\x03\x02\x01\x06\xa9
+SF:\x04\x1b\x02NM\xaa\x170\x15\xa0\x03\x02\x01\0\xa1\x0e0\x0c\x1b\x06krbtg
+SF:t\x1b\x02NM\xab\x16\x1b\x14No\x20client\x20in\x20request");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5566-TCP:V=7.95%I=7%D=9/27%Time=6AB9972C%P=aarch64-unknown-linux-gn
+SF:u%r(RPCCheck,C,"\x80\0\0\(r\xfe\x1d\x13\0\0\0\x03")%r(DNSVersionBindReq
+SF:TCP,C,"\0\x1e\0\x06\x01\0\0\x01\0\0\0\x03")%r(DNSStatusRequestTCP,C,"\0
+SF:\x0c\0\0\x10\0\0\0\0\0\0\x03")%r(X11Probe,C,"l\0\x0b\0\0\0\0\0\0\0\0\x0
+SF:3")%r(NCP,C,"DmdT\0\0\0\x17\0\0\0\x03")%r(afp,C,"\0\x03\0\x01\0\0\0\0\0
+SF:\0\0\x03");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port9000-TCP:V=7.95%I=7%D=9/27%Time=6AB9972B%P=aarch64-unknown-linux-gn
+SF:u%r(GenericLines,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type
+SF::\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x2
+SF:0Bad\x20Request")%r(GetRequest,4034,"HTTP/1\.0\x20200\x20OK\r\nAccept-R
+SF:anges:\x20bytes\r\nCache-Control:\x20max-age=31536000\r\nContent-Length
+SF::\x2014202\r\nContent-Security-Policy:\x20script-src\x20'self'\x20https
+SF:://js\.hsforms\.net\x20https://www\.google\.com/recaptcha/\x20https://w
+SF:ww\.gstatic\.com/recaptcha/;\x20object-src\x20'none';\x20frame-ancestor
+SF:s\x20'none';\x20frame-src\x20https://www\.google\.com/recaptcha/\x20htt
+SF:ps://www\.gstatic\.com/recaptcha/\r\nContent-Type:\x20text/html;\x20cha
+SF:rset=utf-8\r\nLast-Modified:\x20Thu,\x2019\x20Mar\x202026\x2021:55:31\x
+SF:20GMT\r\nPermissions-Policy:\x20accelerometer=\(\),ambient-light-sensor
+SF:=\(\),attribution-reporting=\(\),autoplay=\(\),battery=\(\),browsing-to
+SF:pics=\(\),camera=\(\),captured-surface-control=\(\),ch-device-memory=\(
+SF:\),ch-downlink=\(\),ch-dpr=\(\),ch-ect=\(\),ch-prefers-color-scheme=\(\
+SF:),ch-prefers-reduced-motion=\(\),ch-prefers-reduced-transparency=\(\),c
+SF:h-rtt=\(\),ch-save-data=\(\),ch-ua=\(\),ch-ua-arch=\(\),ch-ua-bitness=\
+SF:(\),ch-ua-form-factors=\(\),ch-ua-full-version=\(\),ch-ua-full-version-
+SF:list=\(\),ch-ua-mobil")%r(HTTPOptions,4034,"HTTP/1\.0\x20200\x20OK\r\nA
+SF:ccept-Ranges:\x20bytes\r\nCache-Control:\x20max-age=31536000\r\nContent
+SF:-Length:\x2014202\r\nContent-Security-Policy:\x20script-src\x20'self'\x
+SF:20https://js\.hsforms\.net\x20https://www\.google\.com/recaptcha/\x20ht
+SF:tps://www\.gstatic\.com/recaptcha/;\x20object-src\x20'none';\x20frame-a
+SF:ncestors\x20'none';\x20frame-src\x20https://www\.google\.com/recaptcha/
+SF:\x20https://www\.gstatic\.com/recaptcha/\r\nContent-Type:\x20text/html;
+SF:\x20charset=utf-8\r\nLast-Modified:\x20Thu,\x2019\x20Mar\x202026\x2021:
+SF:55:31\x20GMT\r\nPermissions-Policy:\x20accelerometer=\(\),ambient-light
+SF:-sensor=\(\),attribution-reporting=\(\),autoplay=\(\),battery=\(\),brow
+SF:sing-topics=\(\),camera=\(\),captured-surface-control=\(\),ch-device-me
+SF:mory=\(\),ch-downlink=\(\),ch-dpr=\(\),ch-ect=\(\),ch-prefers-color-sch
+SF:eme=\(\),ch-prefers-reduced-motion=\(\),ch-prefers-reduced-transparency
+SF:=\(\),ch-rtt=\(\),ch-save-data=\(\),ch-ua=\(\),ch-ua-arch=\(\),ch-ua-bi
+SF:tness=\(\),ch-ua-form-factors=\(\),ch-ua-full-version=\(\),ch-ua-full-v
+SF:ersion-list=\(\),ch-ua-mobil");
+MAC Address: 6C:1F:F7:16:DE:F6 (Ugreen Group Limited)
+Device type: general purpose
+Running: Linux 3.X|4.X
+OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+OS details: Linux 3.2 - 4.14
+Network Distance: 1 hop
+Service Info: OS: Windows; Device: webcam; CPE: cpe:/o:microsoft:windows, cpe:/h:pelco:ide10dn
+
+Nmap scan report for 192.168.5.15
+Host is up (0.021s latency).
+Not shown: 973 closed tcp ports (reset)
+PORT      STATE SERVICE           VERSION
+22/tcp    open  ssh               OpenSSH 8.2 (protocol 2.0)
+53/tcp    open  domain            (unknown banner: DNSServer)
+80/tcp    open  http              nginx
+88/tcp    open  kerberos-sec      (server time: 2026-09-27 22:22:36Z)
+135/tcp   open  msrpc             Microsoft Windows RPC
+139/tcp   open  netbios-ssn       Samba smbd 4
+389/tcp   open  ldap              (Anonymous bind OK)
+443/tcp   open  ssl/http          nginx
+445/tcp   open  netbios-ssn       Samba smbd 4
+464/tcp   open  kpasswd5?
+554/tcp   open  rtsp              D-Link DCS-2130 or Pelco IDE10DN webcam rtspd
+636/tcp   open  ldapssl?
+1024/tcp  open  msrpc             Microsoft Windows RPC
+1935/tcp  open  rtmp?
+3261/tcp  open  winshadow?
+3268/tcp  open  ldap              (Anonymous bind OK)
+3269/tcp  open  globalcatLDAPssl?
+5000/tcp  open  http              nginx
+5001/tcp  open  ssl/http          nginx
+5357/tcp  open  http              nginx
+5566/tcp  open  westec-connect?
+8000/tcp  open  nagios-nsca       Nagios NSCA
+8088/tcp  open  http              Apache Tomcat (language: en)
+9000/tcp  open  http              Golang net/http server
+32768/tcp open  mongodb           MongoDB 3.6 after 3.6.3, or 3.7.3 or later
+50001/tcp open  upnp              Portable SDK for UPnP 1.12.1 (Linux 4.4.302+; UPnP 1.0)
+50002/tcp open  http              lighttpd 1.4.76
+4 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port53-TCP:V=7.95%I=7%D=9/27%Time=6AB99730%P=aarch64-unknown-linux-gnu%
+SF:r(DNSVersionBindReqTCP,36,"\x004\0\x06\x85\0\0\x01\0\x01\0\0\0\0\x07ver
+SF:sion\x04bind\0\0\x10\0\x03\xc0\x0c\0\x10\0\x03\0\0\0\0\0\n\tDNSServer");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port88-TCP:V=7.95%I=7%D=9/27%Time=6AB99731%P=aarch64-unknown-linux-gnu%
+SF:r(Kerberos,68,"\0\0\0d~b0`\xa0\x03\x02\x01\x05\xa1\x03\x02\x01\x1e\xa4\
+SF:x11\x18\x0f20260927222236Z\xa5\x05\x02\x03\x03W\x94\xa6\x03\x02\x01\x06
+SF:\xa9\x04\x1b\x02NM\xaa\x170\x15\xa0\x03\x02\x01\0\xa1\x0e0\x0c\x1b\x06k
+SF:rbtgt\x1b\x02NM\xab\x16\x1b\x14No\x20client\x20in\x20request");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5566-TCP:V=7.95%I=7%D=9/27%Time=6AB99738%P=aarch64-unknown-linux-gn
+SF:u%r(RPCCheck,C,"\x80\0\0\(r\xfe\x1d\x13\0\0\0\x03")%r(DNSVersionBindReq
+SF:TCP,C,"\0\x1e\0\x06\x01\0\0\x01\0\0\0\x03")%r(DNSStatusRequestTCP,C,"\0
+SF:\x0c\0\0\x10\0\0\0\0\0\0\x03")%r(X11Probe,C,"l\0\x0b\0\0\0\0\0\0\0\0\x0
+SF:3")%r(NCP,C,"DmdT\0\0\0\x17\0\0\0\x03")%r(afp,C,"\0\x03\0\x01\0\0\0\0\0
+SF:\0\0\x03");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port9000-TCP:V=7.95%I=7%D=9/27%Time=6AB99733%P=aarch64-unknown-linux-gn
+SF:u%r(GenericLines,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type
+SF::\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x2
+SF:0Bad\x20Request")%r(GetRequest,4034,"HTTP/1\.0\x20200\x20OK\r\nAccept-R
+SF:anges:\x20bytes\r\nCache-Control:\x20max-age=31536000\r\nContent-Length
+SF::\x2014202\r\nContent-Security-Policy:\x20script-src\x20'self'\x20https
+SF:://js\.hsforms\.net\x20https://www\.google\.com/recaptcha/\x20https://w
+SF:ww\.gstatic\.com/recaptcha/;\x20object-src\x20'none';\x20frame-ancestor
+SF:s\x20'none';\x20frame-src\x20https://www\.google\.com/recaptcha/\x20htt
+SF:ps://www\.gstatic\.com/recaptcha/\r\nContent-Type:\x20text/html;\x20cha
+SF:rset=utf-8\r\nLast-Modified:\x20Thu,\x2019\x20Mar\x202026\x2021:55:31\x
+SF:20GMT\r\nPermissions-Policy:\x20accelerometer=\(\),ambient-light-sensor
+SF:=\(\),attribution-reporting=\(\),autoplay=\(\),battery=\(\),browsing-to
+SF:pics=\(\),camera=\(\),captured-surface-control=\(\),ch-device-memory=\(
+SF:\),ch-downlink=\(\),ch-dpr=\(\),ch-ect=\(\),ch-prefers-color-scheme=\(\
+SF:),ch-prefers-reduced-motion=\(\),ch-prefers-reduced-transparency=\(\),c
+SF:h-rtt=\(\),ch-save-data=\(\),ch-ua=\(\),ch-ua-arch=\(\),ch-ua-bitness=\
+SF:(\),ch-ua-form-factors=\(\),ch-ua-full-version=\(\),ch-ua-full-version-
+SF:list=\(\),ch-ua-mobil")%r(HTTPOptions,4034,"HTTP/1\.0\x20200\x20OK\r\nA
+SF:ccept-Ranges:\x20bytes\r\nCache-Control:\x20max-age=31536000\r\nContent
+SF:-Length:\x2014202\r\nContent-Security-Policy:\x20script-src\x20'self'\x
+SF:20https://js\.hsforms\.net\x20https://www\.google\.com/recaptcha/\x20ht
+SF:tps://www\.gstatic\.com/recaptcha/;\x20object-src\x20'none';\x20frame-a
+SF:ncestors\x20'none';\x20frame-src\x20https://www\.google\.com/recaptcha/
+SF:\x20https://www\.gstatic\.com/recaptcha/\r\nContent-Type:\x20text/html;
+SF:\x20charset=utf-8\r\nLast-Modified:\x20Thu,\x2019\x20Mar\x202026\x2021:
+SF:55:31\x20GMT\r\nPermissions-Policy:\x20accelerometer=\(\),ambient-light
+SF:-sensor=\(\),attribution-reporting=\(\),autoplay=\(\),battery=\(\),brow
+SF:sing-topics=\(\),camera=\(\),captured-surface-control=\(\),ch-device-me
+SF:mory=\(\),ch-downlink=\(\),ch-dpr=\(\),ch-ect=\(\),ch-prefers-color-sch
+SF:eme=\(\),ch-prefers-reduced-motion=\(\),ch-prefers-reduced-transparency
+SF:=\(\),ch-rtt=\(\),ch-save-data=\(\),ch-ua=\(\),ch-ua-arch=\(\),ch-ua-bi
+SF:tness=\(\),ch-ua-form-factors=\(\),ch-ua-full-version=\(\),ch-ua-full-v
+SF:ersion-list=\(\),ch-ua-mobil");
+MAC Address: 90:09:D0:46:EE:BF (Synology Incorporated)
+Device type: general purpose
+Running: Linux 3.X|4.X
+OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+OS details: Linux 3.2 - 4.14
+Network Distance: 1 hop
+Service Info: OSs: Windows, Linux; Device: webcam; CPE: cpe:/o:microsoft:windows, cpe:/h:pelco:ide10dn, cpe:/o:linux:linux_kernel:4.4.302%2B
+
+Nmap scan report for 192.168.5.16
+Host is up (0.021s latency).
+Not shown: 975 closed tcp ports (reset)
+PORT      STATE SERVICE           VERSION
+22/tcp    open  ssh               OpenSSH 8.2 (protocol 2.0)
+53/tcp    open  domain            (unknown banner: DNSServer)
+80/tcp    open  http              nginx
+88/tcp    open  kerberos-sec      (server time: 2026-09-27 22:22:51Z)
+135/tcp   open  msrpc             Microsoft Windows RPC
+139/tcp   open  netbios-ssn       Samba smbd 4
+389/tcp   open  ldap              (Anonymous bind OK)
+443/tcp   open  ssl/http          nginx
+445/tcp   open  netbios-ssn       Samba smbd 4
+464/tcp   open  kpasswd5?
+554/tcp   open  rtsp              D-Link DCS-2130 or Pelco IDE10DN webcam rtspd
+636/tcp   open  ldapssl?
+1024/tcp  open  msrpc             Microsoft Windows RPC
+1935/tcp  open  rtmp?
+3261/tcp  open  winshadow?
+3268/tcp  open  ldap              (Anonymous bind OK)
+3269/tcp  open  globalcatLDAPssl?
+5000/tcp  open  http              nginx
+5001/tcp  open  ssl/http          nginx
+5357/tcp  open  http              nginx
+5566/tcp  open  westec-connect?
+8000/tcp  open  nagios-nsca       Nagios NSCA
+8088/tcp  open  http              Apache Tomcat (language: en)
+9000/tcp  open  http              Golang net/http server
+32768/tcp open  mongodb           MongoDB 3.6 after 3.6.3, or 3.7.3 or later
+4 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port53-TCP:V=7.95%I=7%D=9/27%Time=6AB9973D%P=aarch64-unknown-linux-gnu%
+SF:r(DNSVersionBindReqTCP,36,"\x004\0\x06\x85\0\0\x01\0\x01\0\0\0\0\x07ver
+SF:sion\x04bind\0\0\x10\0\x03\xc0\x0c\0\x10\0\x03\0\0\0\0\0\n\tDNSServer");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port88-TCP:V=7.95%I=7%D=9/27%Time=6AB99740%P=aarch64-unknown-linux-gnu%
+SF:r(Kerberos,68,"\0\0\0d~b0`\xa0\x03\x02\x01\x05\xa1\x03\x02\x01\x1e\xa4\
+SF:x11\x18\x0f20260927222251Z\xa5\x05\x02\x03\x01\x1e\xb9\xa6\x03\x02\x01\
+SF:x06\xa9\x04\x1b\x02NM\xaa\x170\x15\xa0\x03\x02\x01\0\xa1\x0e0\x0c\x1b\x
+SF:06krbtgt\x1b\x02NM\xab\x16\x1b\x14No\x20client\x20in\x20request");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5566-TCP:V=7.95%I=7%D=9/27%Time=6AB99748%P=aarch64-unknown-linux-gn
+SF:u%r(RPCCheck,C,"\x80\0\0\(r\xfe\x1d\x13\0\0\0\x03")%r(DNSVersionBindReq
+SF:TCP,C,"\0\x1e\0\x06\x01\0\0\x01\0\0\0\x03")%r(DNSStatusRequestTCP,C,"\0
+SF:\x0c\0\0\x10\0\0\0\0\0\0\x03")%r(X11Probe,C,"l\0\x0b\0\0\0\0\0\0\0\0\x0
+SF:3")%r(NCP,C,"DmdT\0\0\0\x17\0\0\0\x03")%r(afp,C,"\0\x03\0\x01\0\0\0\0\0
+SF:\0\0\x03");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port9000-TCP:V=7.95%I=7%D=9/27%Time=6AB99747%P=aarch64-unknown-linux-gn
+SF:u%r(GenericLines,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nContent-Type
+SF::\x20text/plain;\x20charset=utf-8\r\nConnection:\x20close\r\n\r\n400\x2
+SF:0Bad\x20Request")%r(GetRequest,4034,"HTTP/1\.0\x20200\x20OK\r\nAccept-R
+SF:anges:\x20bytes\r\nCache-Control:\x20max-age=31536000\r\nContent-Length
+SF::\x2014202\r\nContent-Security-Policy:\x20script-src\x20'self'\x20https
+SF:://js\.hsforms\.net\x20https://www\.google\.com/recaptcha/\x20https://w
+SF:ww\.gstatic\.com/recaptcha/;\x20object-src\x20'none';\x20frame-ancestor
+SF:s\x20'none';\x20frame-src\x20https://www\.google\.com/recaptcha/\x20htt
+SF:ps://www\.gstatic\.com/recaptcha/\r\nContent-Type:\x20text/html;\x20cha
+SF:rset=utf-8\r\nLast-Modified:\x20Thu,\x2019\x20Mar\x202026\x2021:55:31\x
+SF:20GMT\r\nPermissions-Policy:\x20accelerometer=\(\),ambient-light-sensor
+SF:=\(\),attribution-reporting=\(\),autoplay=\(\),battery=\(\),browsing-to
+SF:pics=\(\),camera=\(\),captured-surface-control=\(\),ch-device-memory=\(
+SF:\),ch-downlink=\(\),ch-dpr=\(\),ch-ect=\(\),ch-prefers-color-scheme=\(\
+SF:),ch-prefers-reduced-motion=\(\),ch-prefers-reduced-transparency=\(\),c
+SF:h-rtt=\(\),ch-save-data=\(\),ch-ua=\(\),ch-ua-arch=\(\),ch-ua-bitness=\
+SF:(\),ch-ua-form-factors=\(\),ch-ua-full-version=\(\),ch-ua-full-version-
+SF:list=\(\),ch-ua-mobil")%r(HTTPOptions,4034,"HTTP/1\.0\x20200\x20OK\r\nA
+SF:ccept-Ranges:\x20bytes\r\nCache-Control:\x20max-age=31536000\r\nContent
+SF:-Length:\x2014202\r\nContent-Security-Policy:\x20script-src\x20'self'\x
+SF:20https://js\.hsforms\.net\x20https://www\.google\.com/recaptcha/\x20ht
+SF:tps://www\.gstatic\.com/recaptcha/;\x20object-src\x20'none';\x20frame-a
+SF:ncestors\x20'none';\x20frame-src\x20https://www\.google\.com/recaptcha/
+SF:\x20https://www\.gstatic\.com/recaptcha/\r\nContent-Type:\x20text/html;
+SF:\x20charset=utf-8\r\nLast-Modified:\x20Thu,\x2019\x20Mar\x202026\x2021:
+SF:55:31\x20GMT\r\nPermissions-Policy:\x20accelerometer=\(\),ambient-light
+SF:-sensor=\(\),attribution-reporting=\(\),autoplay=\(\),battery=\(\),brow
+SF:sing-topics=\(\),camera=\(\),captured-surface-control=\(\),ch-device-me
+SF:mory=\(\),ch-downlink=\(\),ch-dpr=\(\),ch-ect=\(\),ch-prefers-color-sch
+SF:eme=\(\),ch-prefers-reduced-motion=\(\),ch-prefers-reduced-transparency
+SF:=\(\),ch-rtt=\(\),ch-save-data=\(\),ch-ua=\(\),ch-ua-arch=\(\),ch-ua-bi
+SF:tness=\(\),ch-ua-form-factors=\(\),ch-ua-full-version=\(\),ch-ua-full-v
+SF:ersion-list=\(\),ch-ua-mobil");
+MAC Address: 90:09:D0:46:EE:C0 (Synology Incorporated)
+Device type: general purpose
+Running: Linux 3.X|4.X
+OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+OS details: Linux 3.2 - 4.14
+Network Distance: 1 hop
+Service Info: OS: Windows; Device: webcam; CPE: cpe:/o:microsoft:windows, cpe:/h:pelco:ide10dn
+
+Nmap scan report for 192.168.5.102
+Host is up (0.032s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE SERVICE    VERSION
+8009/tcp open  tcpwrapped
+MAC Address: 18:0B:1B:73:D0:7D (Unknown)
+Device type: general purpose
+Running: Linux 4.X|5.X
+OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5
+OS details: Linux 4.15 - 5.19
+Network Distance: 1 hop
+
+Nmap scan report for 192.168.5.110
+Host is up (0.021s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE  VERSION
+990/tcp  open  ssl/ftp
+3000/tcp open  ppp?
+6000/tcp open  ssl/X11?
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port990-TCP:V=7.95%T=SSL%I=7%D=9/27%Time=6AB9974F%P=aarch64-unknown-lin
+SF:ux-gnu%r(NULL,19,"220\x20BBL-P003\x20FTP\x20Server\r\n")%r(GenericLines
+SF:,1F,"220\x20BBL-P003\x20FTP\x20Server\r\n332\x20\r\n")%r(Help,1F,"220\x
+SF:20BBL-P003\x20FTP\x20Server\r\n332\x20\r\n")%r(SSLSessionReq,1F,"220\x2
+SF:0BBL-P003\x20FTP\x20Server\r\n332\x20\r\n")%r(SMBProgNeg,1F,"220\x20BBL
+SF:-P003\x20FTP\x20Server\r\n332\x20\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port3000-TCP:V=7.95%I=7%D=9/27%Time=6AB99749%P=aarch64-unknown-linux-gn
+SF:u%r(GenericLines,A1,"\xa5\xa5\xa1\0{\"login\":{\"sequence_id\":1000,\"c
+SF:ommand\":\"login_report\",\"status\":\"FAILURE\",\"reason\":\"{\\\"ret\
+SF:\\":\\\"0\\\",\\\"devmsg\\\":\\\"Incompleted\x20json\\\",\\\"err_code\\
+SF:\":83968023}\"}}\xa7\xa7")%r(GetRequest,A1,"\xa5\xa5\xa1\0{\"login\":{\
+SF:"sequence_id\":1000,\"command\":\"login_report\",\"status\":\"FAILURE\"
+SF:,\"reason\":\"{\\\"ret\\\":\\\"0\\\",\\\"devmsg\\\":\\\"Incompleted\x20
+SF:json\\\",\\\"err_code\\\":83968023}\"}}\xa7\xa7")%r(Help,A1,"\xa5\xa5\x
+SF:a1\0{\"login\":{\"sequence_id\":1000,\"command\":\"login_report\",\"sta
+SF:tus\":\"FAILURE\",\"reason\":\"{\\\"ret\\\":\\\"0\\\",\\\"devmsg\\\":\\
+SF:\"Incompleted\x20json\\\",\\\"err_code\\\":83968023}\"}}\xa7\xa7")%r(NC
+SF:P,A1,"\xa5\xa5\xa1\0{\"login\":{\"sequence_id\":1000,\"command\":\"logi
+SF:n_report\",\"status\":\"FAILURE\",\"reason\":\"{\\\"ret\\\":\\\"0\\\",\
+SF:\\"devmsg\\\":\\\"Incompleted\x20json\\\",\\\"err_code\\\":83968023}\"}
+SF:}\xa7\xa7")%r(HTTPOptions,A1,"\xa5\xa5\xa1\0{\"login\":{\"sequence_id\"
+SF::1000,\"command\":\"login_report\",\"status\":\"FAILURE\",\"reason\":\"
+SF:{\\\"ret\\\":\\\"0\\\",\\\"devmsg\\\":\\\"Incompleted\x20json\\\",\\\"e
+SF:rr_code\\\":83968023}\"}}\xa7\xa7")%r(RTSPRequest,A1,"\xa5\xa5\xa1\0{\"
+SF:login\":{\"sequence_id\":1000,\"command\":\"login_report\",\"status\":\
+SF:"FAILURE\",\"reason\":\"{\\\"ret\\\":\\\"0\\\",\\\"devmsg\\\":\\\"Incom
+SF:pleted\x20json\\\",\\\"err_code\\\":83968023}\"}}\xa7\xa7")%r(RPCCheck,
+SF:A1,"\xa5\xa5\xa1\0{\"login\":{\"sequence_id\":1000,\"command\":\"login_
+SF:report\",\"status\":\"FAILURE\",\"reason\":\"{\\\"ret\\\":\\\"0\\\",\\\
+SF:"devmsg\\\":\\\"Incompleted\x20json\\\",\\\"err_code\\\":83968023}\"}}\
+SF:xa7\xa7")%r(DNSVersionBindReqTCP,A1,"\xa5\xa5\xa1\0{\"login\":{\"sequen
+SF:ce_id\":1000,\"command\":\"login_report\",\"status\":\"FAILURE\",\"reas
+SF:on\":\"{\\\"ret\\\":\\\"0\\\",\\\"devmsg\\\":\\\"Incompleted\x20json\\\
+SF:",\\\"err_code\\\":83968023}\"}}\xa7\xa7")%r(DNSStatusRequestTCP,A1,"\x
+SF:a5\xa5\xa1\0{\"login\":{\"sequence_id\":1000,\"command\":\"login_report
+SF:\",\"status\":\"FAILURE\",\"reason\":\"{\\\"ret\\\":\\\"0\\\",\\\"devms
+SF:g\\\":\\\"Incompleted\x20json\\\",\\\"err_code\\\":83968023}\"}}\xa7\xa
+SF:7");
+MAC Address: DC:DA:0C:53:55:00 (Espressif)
+Aggressive OS guesses: Chamberlain myQ garage door opener (93%), IHome SmartPlug iSP5WWC (93%), iRobot Roomba 980 vacuum cleaner (93%), Intelbras VIP 3220 camera (93%), Oracle Virtualbox lwIP NAT bridge (93%), Anova Precision Cooker (High-Flying WLAN module) (92%), Grandstream GXP1105 VoIP phone (92%), Daikin DKN Cloud Wi-Fi Adaptor (91%), OSRAM Lightify ZigBee gateway (90%), Milight WiFi Receiver bridge (90%)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=9/27%OT=990%CT=1%CU=30453%PV=Y%DS=1%DC=D%G=Y%M=DCDA0C%
+OS:TM=6AB99845%P=aarch64-unknown-linux-gnu)SEQ(TI=I%CI=I%II=RI%SS=O%TS=U)SE
+OS:Q(SP=100%GCD=2%ISR=10D%TI=I%CI=I%II=RI%SS=O%TS=U)SEQ(SP=105%GCD=1%ISR=10
+OS:4%TI=I%CI=I%II=RI%SS=O%TS=U)SEQ(SP=105%GCD=1%ISR=10B%TI=I%CI=I%TS=U)SEQ(
+OS:SP=F5%GCD=2%ISR=103%TI=I%CI=I%II=RI%SS=O%TS=U)OPS(O1=M578%O2=M578%O3=M57
+OS:8%O4=M578%O5=M578%O6=M578)WIN(W1=8000%W2=8000%W3=8000%W4=8000%W5=8000%W6
+OS:=8000)ECN(R=Y%DF=N%T=FF%W=8000%O=M578%CC=N%Q=)T1(R=Y%DF=N%T=FF%S=O%A=S+%
+OS:F=AS%RD=0%Q=)T2(R=N)T3(R=Y%DF=N%T=FF%W=8000%S=O%A=S+%F=AS%O=M578%RD=0%Q=
+OS:)T4(R=Y%DF=N%T=FF%W=80%S=A%A=S%F=AR%O=%RD=0%Q=)T5(R=Y%DF=N%T=FF%W=80%S=A
+OS:%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=N%T=FF%W=80%S=A%A=S%F=AR%O=%RD=0%Q=)T7(R
+OS:=Y%DF=N%T=FF%W=80%S=A%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=FF%IPL=38%UN=0%
+OS:RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=S%T=FF%CD=S)
+
+Network Distance: 1 hop
+
+Nmap scan report for 192.168.5.111
+Host is up (0.029s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+80/tcp open  http    SHIP 2.0
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port80-TCP:V=7.95%I=7%D=9/27%Time=6AB9974F%P=aarch64-unknown-linux-gnu%
+SF:r(GetRequest,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nC
+SF:ontent-Length:\x2049\r\nContent-Type:\x20text/html\r\n\r\n<html><body><
+SF:center>200\x20OK</center></body></html>")%r(HTTPOptions,83,"HTTP/1\.1\x
+SF:20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-Length:\x2049\r\nCont
+SF:ent-Type:\x20text/html\r\n\r\n<html><body><center>200\x20OK</center></b
+SF:ody></html>")%r(RTSPRequest,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SH
+SF:IP\x202\.0\r\nContent-Length:\x2049\r\nContent-Type:\x20text/html\r\n\r
+SF:\n<html><body><center>200\x20OK</center></body></html>")%r(FourOhFourRe
+SF:quest,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-
+SF:Length:\x2049\r\nContent-Type:\x20text/html\r\n\r\n<html><body><center>
+SF:200\x20OK</center></body></html>")%r(GenericLines,83,"HTTP/1\.1\x20200\
+SF:x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-Length:\x2049\r\nContent-Ty
+SF:pe:\x20text/html\r\n\r\n<html><body><center>200\x20OK</center></body></
+SF:html>")%r(Help,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\
+SF:nContent-Length:\x2049\r\nContent-Type:\x20text/html\r\n\r\n<html><body
+SF:><center>200\x20OK</center></body></html>")%r(TerminalServerCookie,83,"
+SF:HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-Length:\x2
+SF:049\r\nContent-Type:\x20text/html\r\n\r\n<html><body><center>200\x20OK<
+SF:/center></body></html>")%r(SIPOptions,83,"HTTP/1\.1\x20200\x20OK\r\nSer
+SF:ver:\x20SHIP\x202\.0\r\nContent-Length:\x2049\r\nContent-Type:\x20text/
+SF:html\r\n\r\n<html><body><center>200\x20OK</center></body></html>");
+MAC Address: DC:62:79:55:10:D3 (Unknown)
+Device type: specialized|general purpose|VoIP phone|webcam
+Running (JUST GUESSING): lwIP 2.X|1.4.X (98%), Grandstream embedded (92%), Eve Systems embedded (91%), Rigol Technologies embedded (91%), Philips embedded (90%), Advanced Illumination embedded (89%)
+OS CPE: cpe:/a:lwip_project:lwip:2 cpe:/a:lwip_project:lwip cpe:/a:lwip_project:lwip:1.4.0 cpe:/h:grandstream:gxp1105 cpe:/h:philips:hue_bridge cpe:/h:advanced_illumination:dcs-100e
+Aggressive OS guesses: lwIP 2.1.0 - 2.2.0 (98%), lwIP 1.4.1 - 2.0.3 (97%), lwIP 1.4.0 or earlier (96%), Grandstream GXP1105 VoIP phone (92%), Eve Cam (lwIP 2.1.0 - 2.2.0) (91%), Rigol DP832 DC power supply (91%), lwIP 1.4.0 (91%), Rigol DSG3060 signal generator (91%), Philips Hue Bridge (lwIP 1.4.0) (90%), Advanced Illumination DCS-100E lighting controller (89%)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=9/27%OT=80%CT=1%CU=44528%PV=Y%DS=1%DC=D%G=Y%M=DC6279%T
+OS:M=6AB99845%P=aarch64-unknown-linux-gnu)SEQ(SP=0%GCD=18DB01%ISR=BF%TI=I%C
+OS:I=I%II=RI%SS=S%TS=U)SEQ(SP=0%GCD=18DB07%ISR=C0%TI=I%CI=I%II=RI%SS=S%TS=U
+OS:)SEQ(SP=87%GCD=1%ISR=C0%TI=I%CI=I%TS=U)SEQ(SP=88%GCD=1%ISR=C0%TI=I%CI=I%
+OS:II=RI%SS=S%TS=U)OPS(O1=M5B4%O2=M5B4%O3=M5B4%O4=M5B4%O5=M5B4%O6=M5B4)WIN(
+OS:W1=B68%W2=B68%W3=B68%W4=B68%W5=B68%W6=B68)ECN(R=Y%DF=N%T=FF%W=B68%O=M5B4
+OS:%CC=N%Q=)T1(R=Y%DF=N%T=FF%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=Y%DF=N%T=FF%
+OS:W=B68%S=O%A=S+%F=AS%O=M5B4%RD=0%Q=)T4(R=Y%DF=N%T=FF%W=680B%S=A%A=S%F=AR%
+OS:O=%RD=0%Q=)T5(R=Y%DF=N%T=FF%W=680B%S=A%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=N%
+OS:T=FF%W=680B%S=A%A=S%F=AR%O=%RD=0%Q=)T7(R=Y%DF=N%T=FF%W=680B%S=A%A=S+%F=A
+OS:R%O=%RD=0%Q=)U1(R=Y%DF=N%T=FF%IPL=38%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RU
+OS:D=G)IE(R=Y%DFI=S%T=FF%CD=S)
+
+Network Distance: 1 hop
+
+Nmap scan report for Zangpachi.localdomain (192.168.5.116)
+Host is up (0.016s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 10.0p2 Debian 7+deb13u4 (protocol 2.0)
+111/tcp  open  rpcbind 2-4 (RPC #100000)
+8086/tcp open  http    InfluxDB http admin 1.13.1
+MAC Address: 2C:CF:67:EA:08:3A (Raspberry Pi (Trading))
+Aggressive OS guesses: Linux 4.15 - 5.19 (97%), Android 11 (Linux 4.9) (93%), Android 12 (Linux 5.4) (93%), Linux 3.8 (93%), Android 10 - 12 (Linux 4.14 - 4.19) (93%), Linux 3.2 - 4.14 (93%), Linux 5.4 - 5.10 (93%), OpenWrt 21.02 (Linux 5.4) (93%), MikroTik RouterOS 7.2 - 7.5 (Linux 5.6.3) (93%), Linux 2.6.32 - 3.10 (93%)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=9/27%OT=22%CT=1%CU=40507%PV=Y%DS=1%DC=D%G=Y%M=2CCF67%T
+OS:M=6AB99845%P=aarch64-unknown-linux-gnu)SEQ(SP=104%GCD=1%ISR=10A%TI=Z%CI=
+OS:Z%II=I%TS=21)SEQ(SP=105%GCD=1%ISR=10A%TI=Z%CI=Z%II=I%TS=21)SEQ(SP=109%GC
+OS:D=2%ISR=107%TI=Z%CI=Z%II=I%TS=22)SEQ(SP=FD%GCD=1%ISR=105%TI=Z%CI=Z%II=I%
+OS:TS=21)SEQ(SP=FE%GCD=1%ISR=10B%TI=Z%CI=Z%TS=21)OPS(O1=M5B4ST11NWA%O2=M5B4
+OS:ST11NWA%O3=M5B4NNT11NWA%O4=M5B4ST11NWA%O5=M5B4ST11NWA%O6=M5B4ST11)WIN(W1
+OS:=FE88%W2=FE88%W3=FE88%W4=FE88%W5=FE88%W6=FE88)ECN(R=Y%DF=Y%T=40%W=FAF0%O
+OS:=M5B4NNSNWA%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N
+OS:)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=
+OS:S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF
+OS:=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=
+OS:G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Network Distance: 1 hop
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Nmap scan report for Anker.localdomain (192.168.5.117)
+Host is up (0.035s latency).
+All 1000 scanned ports on Anker.localdomain (192.168.5.117) are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+MAC Address: 7C:E9:13:51:E1:83 (Unknown)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Aggressive OS guesses: Garmin Virb Elite action camera (96%), Roberts STREAM 202 Internet radio (92%), FreeBSD 7.0-RELEASE (92%), 2N Helios IP VoIP doorbell (92%), Advanced Illumination DCS-100E lighting controller (92%), AudioControl D3400 network amplifier (92%), British Gas GS-Z3 data logger (92%), Chamberlain myQ garage door opener (92%), Daikin DKN Cloud Wi-Fi Adaptor (92%), Daysequerra M4.2SI radio (92%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+
+Nmap scan report for amazon-86d8be84b4969aa9.localdomain (192.168.5.120)
+Host is up (0.021s latency).
+Not shown: 954 filtered tcp ports (no-response), 44 closed tcp ports (reset)
+PORT     STATE SERVICE    VERSION
+1080/tcp open  socks5     (No authentication; connection failed)
+8888/tcp open  tcpwrapped
+MAC Address: 50:99:5A:9D:F3:0D (Unknown)
+Aggressive OS guesses: Android 10 - 12 (Linux 4.14 - 4.19) (98%), Android 10 (95%), Android 5 - 10 (Linux 3.4 - 3.18) (95%), Linux 2.6.32 (95%), Linux 5.10 - 5.19 (95%), Linux 3.2 - 4.14 (95%), Linux 4.15 - 5.19 (95%), Android 10 (Linux 4.14) (94%), Android 9 - 10 (Linux 4.9 - 4.14) (94%), Android 12 (Linux 5.4) (94%)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=9/27%OT=1080%CT=5555%CU=30606%PV=Y%DS=1%DC=D%G=Y%M=509
+OS:95A%TM=6AB99845%P=aarch64-unknown-linux-gnu)SEQ(SP=101%GCD=1%ISR=10B%TI=
+OS:Z%CI=Z%TS=A)SEQ(SP=106%GCD=1%ISR=106%TI=Z%CI=Z%TS=A)SEQ(SP=106%GCD=1%ISR
+OS:=10B%TI=Z%CI=Z%TS=A)SEQ(SP=107%GCD=1%ISR=10A%TI=Z%CI=Z%TS=A)SEQ(SP=108%G
+OS:CD=2%ISR=10D%TI=Z%CI=Z%TS=A)OPS(O1=M5B4ST11NW8%O2=M5B4ST11NW8%O3=M5B4NNT
+OS:11NW8%O4=M5B4ST11NW8%O5=M5B4ST11NW8%O6=M5B4ST11)WIN(W1=FFFF%W2=FFFF%W3=F
+OS:FFF%W4=FFFF%W5=FFFF%W6=FFFF)ECN(R=Y%DF=Y%TG=40%W=FFFF%O=M5B4NNSNW8%CC=Y%
+OS:Q=)ECN(R=Y%DF=Y%T=40%W=FFFF%O=M5B4NNSNW8%CC=Y%Q=)T1(R=Y%DF=Y%TG=40%S=O%A
+OS:=S+%F=AS%RD=0%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4
+OS:(R=Y%DF=Y%TG=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%
+OS:F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%TG=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T5(R=Y%DF=
+OS:Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%TG=40%W=0%S=A%A=Z%F=R%O=
+OS:%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%TG=40%W
+OS:=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q
+OS:=)U1(R=N)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G
+OS:)IE(R=N)
+
+Network Distance: 1 hop
+
+Nmap scan report for g5-flex.localdomain (192.168.5.122)
+Host is up (0.027s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT    STATE SERVICE  VERSION
+80/tcp  open  http     lighttpd
+443/tcp open  ssl/http lighttpd
+MAC Address: 1C:6A:1B:81:05:32 (Unknown)
+Device type: general purpose
+Running: Linux 3.X|4.X
+OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+OS details: Linux 3.2 - 4.14
+Network Distance: 1 hop
+
+Nmap scan report for P125M.localdomain (192.168.5.124)
+Host is up (0.020s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+80/tcp open  http    SHIP 2.0
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port80-TCP:V=7.95%I=7%D=9/27%Time=6AB99753%P=aarch64-unknown-linux-gnu%
+SF:r(GetRequest,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nC
+SF:ontent-Length:\x2049\r\nContent-Type:\x20text/html\r\n\r\n<html><body><
+SF:center>200\x20OK</center></body></html>")%r(HTTPOptions,83,"HTTP/1\.1\x
+SF:20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-Length:\x2049\r\nCont
+SF:ent-Type:\x20text/html\r\n\r\n<html><body><center>200\x20OK</center></b
+SF:ody></html>")%r(RTSPRequest,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SH
+SF:IP\x202\.0\r\nContent-Length:\x2049\r\nContent-Type:\x20text/html\r\n\r
+SF:\n<html><body><center>200\x20OK</center></body></html>")%r(FourOhFourRe
+SF:quest,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-
+SF:Length:\x2049\r\nContent-Type:\x20text/html\r\n\r\n<html><body><center>
+SF:200\x20OK</center></body></html>")%r(GenericLines,83,"HTTP/1\.1\x20200\
+SF:x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-Length:\x2049\r\nContent-Ty
+SF:pe:\x20text/html\r\n\r\n<html><body><center>200\x20OK</center></body></
+SF:html>")%r(Help,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\
+SF:nContent-Length:\x2049\r\nContent-Type:\x20text/html\r\n\r\n<html><body
+SF:><center>200\x20OK</center></body></html>")%r(TerminalServerCookie,83,"
+SF:HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-Length:\x2
+SF:049\r\nContent-Type:\x20text/html\r\n\r\n<html><body><center>200\x20OK<
+SF:/center></body></html>")%r(SIPOptions,83,"HTTP/1\.1\x20200\x20OK\r\nSer
+SF:ver:\x20SHIP\x202\.0\r\nContent-Length:\x2049\r\nContent-Type:\x20text/
+SF:html\r\n\r\n<html><body><center>200\x20OK</center></body></html>");
+MAC Address: DC:62:79:9A:53:34 (Unknown)
+Device type: specialized|general purpose|bridge|webcam
+Running (JUST GUESSING): lwIP 2.X|1.4.X (99%), Oracle Virtualbox (93%), Philips embedded (91%), Advanced Illumination embedded (91%), Rigol Technologies embedded (91%), Eve Systems embedded (90%)
+OS CPE: cpe:/a:lwip_project:lwip:2 cpe:/a:lwip_project:lwip cpe:/a:lwip_project:lwip:1.4.0 cpe:/a:oracle:vm_virtualbox cpe:/h:philips:hue_bridge cpe:/h:advanced_illumination:dcs-100e
+Aggressive OS guesses: lwIP 2.1.0 - 2.2.0 (99%), lwIP 1.4.1 - 2.0.3 (97%), lwIP 1.4.0 or earlier (94%), Oracle Virtualbox lwIP NAT bridge (93%), Philips Hue Bridge (lwIP 1.4.0) (91%), Advanced Illumination DCS-100E lighting controller (91%), Rigol DP832 DC power supply (91%), Rigol DS1074Z Plus oscilloscope (91%), Rigol DSG3060 signal generator (90%), Eve Cam (lwIP 2.1.0 - 2.2.0) (90%)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=9/27%OT=80%CT=1%CU=43955%PV=Y%DS=1%DC=D%G=Y%M=DC6279%T
+OS:M=6AB99845%P=aarch64-unknown-linux-gnu)SEQ(SP=0%GCD=16839D%ISR=BE%TI=I%C
+OS:I=I%II=RI%SS=O%TS=U)SEQ(SP=0%GCD=1683BA%ISR=BE%TI=I%CI=I%II=RI%SS=S%TS=U
+OS:)SEQ(SP=0%GCD=1683C0%ISR=BE%TI=I%CI=I%II=RI%SS=O%TS=U)SEQ(SP=87%GCD=1%IS
+OS:R=BE%TI=I%CI=I%II=RI%SS=S%TS=U)SEQ(SP=8A%GCD=1%ISR=BE%TI=I%CI=I%TS=U)OPS
+OS:(O1=M5B4%O2=M5B4%O3=M5B4%O4=M5B4%O5=M5B4%O6=M5B4)WIN(W1=B68%W2=B68%W3=B6
+OS:8%W4=B68%W5=B68%W6=B68)ECN(R=Y%DF=N%T=FF%W=B68%O=M5B4%CC=N%Q=)T1(R=Y%DF=
+OS:N%T=FF%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=Y%DF=N%T=FF%W=B68%S=O%A=S+%F=AS
+OS:%O=M5B4%RD=0%Q=)T4(R=Y%DF=N%T=FF%W=680B%S=A%A=S%F=AR%O=%RD=0%Q=)T5(R=Y%D
+OS:F=N%T=FF%W=680B%S=A%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=N%T=FF%W=680B%S=A%A=S
+OS:%F=AR%O=%RD=0%Q=)T7(R=Y%DF=N%T=FF%W=680B%S=A%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y
+OS:%DF=N%T=FF%IPL=38%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=S%T=
+OS:FF%CD=S)
+
+Network Distance: 1 hop
+
+Nmap scan report for Zang-phone.localdomain (192.168.5.125)
+Host is up (0.051s latency).
+All 1000 scanned ports on Zang-phone.localdomain (192.168.5.125) are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+MAC Address: 86:EB:8C:B9:BA:2C (Unknown)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Aggressive OS guesses: Barracuda 340 load balancer (97%), Aruba IAP-93 WAP (96%), Aruba Instant WAP (96%), Linux 2.6.32 (96%), Linksys RV042 router (96%), Linux 2.6.18 - 2.6.24 (96%), Linux 2.6.35 (96%), Nokia N900 mobile phone (Linux 2.6.28) (96%), OpenWrt (Linux 2.6.32) (96%), Linux 5.11 (96%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+
+Nmap scan report for USW-Lite-8-PoE.localdomain (192.168.5.126)
+Host is up (0.037s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     Dropbear sshd 2025.89 (protocol 2.0)
+MAC Address: 28:70:4E:74:B3:50 (Ubiquiti)
+Device type: general purpose
+Running: Linux 3.X|4.X
+OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+OS details: Linux 3.2 - 4.14
+Network Distance: 1 hop
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Nmap scan report for 192.168.5.127
+Host is up (0.034s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT     STATE SERVICE    VERSION
+8009/tcp open  tcpwrapped
+MAC Address: 68:13:F3:D4:7D:3C (Amazon Technologies)
+Device type: general purpose
+Running: Linux 4.X|5.X
+OS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5
+OS details: Linux 4.15 - 5.19
+Network Distance: 1 hop
+
+Nmap scan report for Samsung.localdomain (192.168.5.128)
+Host is up (0.17s latency).
+All 1000 scanned ports on Samsung.localdomain (192.168.5.128) are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+MAC Address: 04:E4:B6:AF:23:A2 (Samsung Electronics)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+Nmap scan report for L535.localdomain (192.168.5.129)
+Host is up (0.026s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+80/tcp open  http    SHIP 2.0
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port80-TCP:V=7.95%I=7%D=9/27%Time=6AB99754%P=aarch64-unknown-linux-gnu%
+SF:r(GetRequest,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nC
+SF:ontent-Length:\x2049\r\nContent-Type:\x20text/html\r\n\r\n<html><body><
+SF:center>200\x20OK</center></body></html>")%r(HTTPOptions,83,"HTTP/1\.1\x
+SF:20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-Length:\x2049\r\nCont
+SF:ent-Type:\x20text/html\r\n\r\n<html><body><center>200\x20OK</center></b
+SF:ody></html>")%r(RTSPRequest,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SH
+SF:IP\x202\.0\r\nContent-Length:\x2049\r\nContent-Type:\x20text/html\r\n\r
+SF:\n<html><body><center>200\x20OK</center></body></html>")%r(FourOhFourRe
+SF:quest,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-
+SF:Length:\x2049\r\nContent-Type:\x20text/html\r\n\r\n<html><body><center>
+SF:200\x20OK</center></body></html>")%r(GenericLines,83,"HTTP/1\.1\x20200\
+SF:x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-Length:\x2049\r\nContent-Ty
+SF:pe:\x20text/html\r\n\r\n<html><body><center>200\x20OK</center></body></
+SF:html>")%r(Help,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\
+SF:nContent-Length:\x2049\r\nContent-Type:\x20text/html\r\n\r\n<html><body
+SF:><center>200\x20OK</center></body></html>")%r(TerminalServerCookie,83,"
+SF:HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-Length:\x2
+SF:049\r\nContent-Type:\x20text/html\r\n\r\n<html><body><center>200\x20OK<
+SF:/center></body></html>")%r(SIPOptions,83,"HTTP/1\.1\x20200\x20OK\r\nSer
+SF:ver:\x20SHIP\x202\.0\r\nContent-Length:\x2049\r\nContent-Type:\x20text/
+SF:html\r\n\r\n<html><body><center>200\x20OK</center></body></html>");
+MAC Address: B0:19:21:8A:35:C5 (Unknown)
+Device type: specialized|general purpose|bridge|media device
+Running (JUST GUESSING): lwIP 2.X|1.4.X (99%), Oracle Virtualbox (93%), Philips embedded (91%), Advanced Illumination embedded (91%), Rigol Technologies embedded (91%), Yamaha embedded (90%)
+OS CPE: cpe:/a:lwip_project:lwip:2 cpe:/a:lwip_project:lwip cpe:/a:lwip_project:lwip:1.4.0 cpe:/a:oracle:vm_virtualbox cpe:/h:philips:hue_bridge cpe:/h:advanced_illumination:dcs-100e cpe:/h:yamaha:rx-v671
+Aggressive OS guesses: lwIP 2.1.0 - 2.2.0 (99%), lwIP 1.4.1 - 2.0.3 (97%), lwIP 1.4.0 or earlier (94%), Oracle Virtualbox lwIP NAT bridge (93%), Philips Hue Bridge (lwIP 1.4.0) (91%), Advanced Illumination DCS-100E lighting controller (91%), Rigol DP832 DC power supply (91%), Rigol DS1074Z Plus oscilloscope (91%), Yamaha RX-V671 AV receiver (90%), Rigol DSG3060 signal generator (90%)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=9/27%OT=80%CT=1%CU=30635%PV=Y%DS=1%DC=D%G=Y%M=B01921%T
+OS:M=6AB99845%P=aarch64-unknown-linux-gnu)SEQ(SP=0%GCD=32B70A%ISR=C8%TI=I%C
+OS:I=I%II=RI%SS=O%TS=U)SEQ(SP=8F%GCD=1%ISR=C8%TI=I%CI=I%II=RI%SS=S%TS=U)SEQ
+OS:(SP=91%GCD=1%ISR=C8%TI=I%CI=I%II=RI%SS=O%TS=U)SEQ(SP=93%GCD=1%ISR=C8%TI=
+OS:I%CI=I%TS=U)SEQ(SP=A%GCD=32B735%ISR=C7%TI=I%CI=I%II=RI%SS=S%TS=U)OPS(O1=
+OS:M5B4%O2=M5B4%O3=M5B4%O4=M5B4%O5=M5B4%O6=M5B4)WIN(W1=B68%W2=B68%W3=B68%W4
+OS:=B68%W5=B68%W6=B68)ECN(R=Y%DF=N%T=FF%W=B68%O=M5B4%CC=N%Q=)T1(R=Y%DF=N%T=
+OS:FF%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=Y%DF=N%T=FF%W=B68%S=O%A=S+%F=AS%O=M
+OS:5B4%RD=0%Q=)T4(R=Y%DF=N%T=FF%W=680B%S=A%A=S%F=AR%O=%RD=0%Q=)T5(R=Y%DF=N%
+OS:T=FF%W=680B%S=A%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=N%T=FF%W=680B%S=A%A=S%F=A
+OS:R%O=%RD=0%Q=)T7(R=Y%DF=N%T=FF%W=680B%S=A%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=
+OS:N%T=FF%IPL=38%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=S%T=FF%C
+OS:D=S)
+
+Network Distance: 1 hop
+
+Nmap scan report for amazon-fdebc6b2d.localdomain (192.168.5.141)
+Host is up (0.029s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT     STATE SERVICE         VERSION
+1080/tcp open  socks5          (No authentication; connection failed)
+8888/tcp open  tcpwrapped
+9091/tcp open  xmltec-xmlmail?
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port9091-TCP:V=7.95%I=7%D=9/27%Time=6AB9975C%P=aarch64-unknown-linux-gn
+SF:u%r(GenericLines,A0,"HTTP/1\.0\x20400\x20Bad\x20Request\r\ncontent-leng
+SF:th:\x2085\r\ncontent-type:\x20text/html\r\n\r\nThe\x20request\x20body\x
+SF:20is\x20malformed\x20\(possibly\x20JSON\x20formatting\x20exception\):\x
+SF:20request\x20aborted\.\n\r\n")%r(GetRequest,A0,"HTTP/1\.0\x20400\x20Bad
+SF:\x20Request\r\ncontent-length:\x2085\r\ncontent-type:\x20text/html\r\n\
+SF:r\nThe\x20request\x20body\x20is\x20malformed\x20\(possibly\x20JSON\x20f
+SF:ormatting\x20exception\):\x20request\x20aborted\.\n\r\n")%r(HTTPOptions
+SF:,A0,"HTTP/1\.0\x20400\x20Bad\x20Request\r\ncontent-length:\x2085\r\ncon
+SF:tent-type:\x20text/html\r\n\r\nThe\x20request\x20body\x20is\x20malforme
+SF:d\x20\(possibly\x20JSON\x20formatting\x20exception\):\x20request\x20abo
+SF:rted\.\n\r\n")%r(RTSPRequest,A0,"HTTP/1\.0\x20400\x20Bad\x20Request\r\n
+SF:content-length:\x2085\r\ncontent-type:\x20text/html\r\n\r\nThe\x20reque
+SF:st\x20body\x20is\x20malformed\x20\(possibly\x20JSON\x20formatting\x20ex
+SF:ception\):\x20request\x20aborted\.\n\r\n")%r(FourOhFourRequest,A0,"HTTP
+SF:/1\.0\x20400\x20Bad\x20Request\r\ncontent-length:\x2085\r\ncontent-type
+SF::\x20text/html\r\n\r\nThe\x20request\x20body\x20is\x20malformed\x20\(po
+SF:ssibly\x20JSON\x20formatting\x20exception\):\x20request\x20aborted\.\n\
+SF:r\n")%r(SIPOptions,A0,"HTTP/1\.0\x20400\x20Bad\x20Request\r\ncontent-le
+SF:ngth:\x2085\r\ncontent-type:\x20text/html\r\n\r\nThe\x20request\x20body
+SF:\x20is\x20malformed\x20\(possibly\x20JSON\x20formatting\x20exception\):
+SF:\x20request\x20aborted\.\n\r\n");
+MAC Address: 00:F3:61:25:4F:9B (Amazon Technologies)
+Device type: phone
+Running: Google Android 10.X|4.X|5.X|6.X, Linux 4.X|3.X
+OS CPE: cpe:/o:google:android:10 cpe:/o:linux:linux_kernel:4 cpe:/o:google:android:4 cpe:/o:google:android:5 cpe:/o:google:android:6 cpe:/o:linux:linux_kernel:3
+OS details: Android 9 - 10 (Linux 4.9 - 4.14), Android 4.1 - 6.0 (Linux 3.4 - 3.14)
+Network Distance: 1 hop
+
+Nmap scan report for 192.168.5.146
+Host is up (0.023s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+80/tcp open  http    SHIP 2.0
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port80-TCP:V=7.95%I=7%D=9/27%Time=6AB99757%P=aarch64-unknown-linux-gnu%
+SF:r(GetRequest,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nC
+SF:ontent-Length:\x2049\r\nContent-Type:\x20text/html\r\n\r\n<html><body><
+SF:center>200\x20OK</center></body></html>")%r(HTTPOptions,83,"HTTP/1\.1\x
+SF:20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-Length:\x2049\r\nCont
+SF:ent-Type:\x20text/html\r\n\r\n<html><body><center>200\x20OK</center></b
+SF:ody></html>")%r(RTSPRequest,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SH
+SF:IP\x202\.0\r\nContent-Length:\x2049\r\nContent-Type:\x20text/html\r\n\r
+SF:\n<html><body><center>200\x20OK</center></body></html>")%r(FourOhFourRe
+SF:quest,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-
+SF:Length:\x2049\r\nContent-Type:\x20text/html\r\n\r\n<html><body><center>
+SF:200\x20OK</center></body></html>")%r(GenericLines,83,"HTTP/1\.1\x20200\
+SF:x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-Length:\x2049\r\nContent-Ty
+SF:pe:\x20text/html\r\n\r\n<html><body><center>200\x20OK</center></body></
+SF:html>")%r(Help,83,"HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\
+SF:nContent-Length:\x2049\r\nContent-Type:\x20text/html\r\n\r\n<html><body
+SF:><center>200\x20OK</center></body></html>")%r(TerminalServerCookie,83,"
+SF:HTTP/1\.1\x20200\x20OK\r\nServer:\x20SHIP\x202\.0\r\nContent-Length:\x2
+SF:049\r\nContent-Type:\x20text/html\r\n\r\n<html><body><center>200\x20OK<
+SF:/center></body></html>")%r(SIPOptions,83,"HTTP/1\.1\x20200\x20OK\r\nSer
+SF:ver:\x20SHIP\x202\.0\r\nContent-Length:\x2049\r\nContent-Type:\x20text/
+SF:html\r\n\r\n<html><body><center>200\x20OK</center></body></html>");
+MAC Address: B0:19:21:8A:34:30 (Unknown)
+Device type: specialized|general purpose|bridge|webcam
+Running (JUST GUESSING): lwIP 2.X|1.4.X (99%), Oracle Virtualbox (93%), Philips embedded (91%), Advanced Illumination embedded (91%), Rigol Technologies embedded (91%), Eve Systems embedded (90%)
+OS CPE: cpe:/a:lwip_project:lwip:2 cpe:/a:lwip_project:lwip cpe:/a:lwip_project:lwip:1.4.0 cpe:/a:oracle:vm_virtualbox cpe:/h:philips:hue_bridge cpe:/h:advanced_illumination:dcs-100e
+Aggressive OS guesses: lwIP 2.1.0 - 2.2.0 (99%), lwIP 1.4.1 - 2.0.3 (97%), lwIP 1.4.0 or earlier (94%), Oracle Virtualbox lwIP NAT bridge (93%), Philips Hue Bridge (lwIP 1.4.0) (91%), Advanced Illumination DCS-100E lighting controller (91%), Rigol DP832 DC power supply (91%), Rigol DS1074Z Plus oscilloscope (91%), Rigol DSG3060 signal generator (90%), Eve Cam (lwIP 2.1.0 - 2.2.0) (90%)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=9/27%OT=80%CT=1%CU=38712%PV=Y%DS=1%DC=D%G=Y%M=B01921%T
+OS:M=6AB99845%P=aarch64-unknown-linux-gnu)SEQ(SP=0%GCD=2120CA%ISR=C3%TI=I%C
+OS:I=I%II=RI%SS=O%TS=U)SEQ(SP=8A%GCD=1%ISR=C3%TI=I%CI=I%II=RI%SS=O%TS=U)SEQ
+OS:(SP=8C%GCD=1%ISR=C3%TI=I%CI=I%II=RI%SS=O%TS=U)SEQ(SP=8E%GCD=1%ISR=C3%TI=
+OS:I%CI=I%TS=U)OPS(O1=M5B4%O2=M5B4%O3=M5B4%O4=M5B4%O5=M5B4%O6=M5B4)WIN(W1=B
+OS:68%W2=B68%W3=B68%W4=B68%W5=B68%W6=B68)ECN(R=Y%DF=N%T=FF%W=B68%O=M5B4%CC=
+OS:N%Q=)T1(R=Y%DF=N%T=FF%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=Y%DF=N%T=FF%W=B6
+OS:8%S=O%A=S+%F=AS%O=M5B4%RD=0%Q=)T4(R=Y%DF=N%T=FF%W=680B%S=A%A=S%F=AR%O=%R
+OS:D=0%Q=)T5(R=Y%DF=N%T=FF%W=680B%S=A%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=N%T=FF
+OS:%W=680B%S=A%A=S%F=AR%O=%RD=0%Q=)T7(R=Y%DF=N%T=FF%W=680B%S=A%A=S+%F=AR%O=
+OS:%RD=0%Q=)U1(R=Y%DF=N%T=FF%IPL=38%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)
+OS:IE(R=Y%DFI=S%T=FF%CD=S)
+
+Network Distance: 1 hop
+
+Nmap scan report for Amazon-Smart-Thermostat.localdomain (192.168.5.147)
+Host is up (0.055s latency).
+All 1000 scanned ports on Amazon-Smart-Thermostat.localdomain (192.168.5.147) are in ignored states.
+Not shown: 1000 closed tcp ports (reset)
+MAC Address: 40:89:C6:51:85:48 (Unknown)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Aggressive OS guesses: 2N Helios IP VoIP doorbell (96%), Advanced Illumination DCS-100E lighting controller (96%), AudioControl D3400 network amplifier (96%), British Gas GS-Z3 data logger (96%), Chamberlain myQ garage door opener (96%), Daikin DKN Cloud Wi-Fi Adaptor (96%), Daysequerra M4.2SI radio (96%), Denver Electronics AC-5000W MK2 camera (96%), Eve Cam (lwIP 2.1.0 - 2.2.0) (96%), Fatek FBs-CBEH PLC Ethernet communication board (96%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+
+Nmap scan report for 192.168.5.231
+Host is up (0.027s latency).
+Not shown: 990 filtered tcp ports (no-response)
+PORT     STATE SERVICE       VERSION
+21/tcp   open  ftp?
+22/tcp   open  ssh?
+23/tcp   open  telnet
+25/tcp   open  smtp?
+80/tcp   open  http?
+110/tcp  open  pop3?
+445/tcp  open  microsoft-ds?
+1433/tcp open  ms-sql-s?
+2222/tcp open  EtherNetIP-1?
+8000/tcp open  http-alt?
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port23-TCP:V=7.95%I=7%D=9/27%Time=6AB99753%P=aarch64-unknown-linux-gnu%
+SF:r(NULL,9,"\xff\xfd\x18\xff\xfd\x20\xff\xfd'")%r(GenericLines,1B,"\xff\x
+SF:fd\x18\xff\xfd\x20\xff\xfd'\xff\xfa\x20\x01\xff\xf0\xff\xfa'\x01\xff\xf
+SF:0\xff\xfa\x18\x01\xff\xf0")%r(tn3270,1B,"\xff\xfd\x18\xff\xfd\x20\xff\x
+SF:fd'\xff\xfa\x20\x01\xff\xf0\xff\xfa'\x01\xff\xf0\xff\xfa\x18\x01\xff\xf
+SF:0")%r(GetRequest,1B,"\xff\xfd\x18\xff\xfd\x20\xff\xfd'\xff\xfa\x20\x01\
+SF:xff\xf0\xff\xfa'\x01\xff\xf0\xff\xfa\x18\x01\xff\xf0")%r(RPCCheck,1B,"\
+SF:xff\xfd\x18\xff\xfd\x20\xff\xfd'\xff\xfa\x20\x01\xff\xf0\xff\xfa'\x01\x
+SF:ff\xf0\xff\xfa\x18\x01\xff\xf0")%r(Help,1B,"\xff\xfd\x18\xff\xfd\x20\xf
+SF:f\xfd'\xff\xfa\x20\x01\xff\xf0\xff\xfa'\x01\xff\xf0\xff\xfa\x18\x01\xff
+SF:\xf0")%r(SIPOptions,1B,"\xff\xfd\x18\xff\xfd\x20\xff\xfd'\xff\xfa\x20\x
+SF:01\xff\xf0\xff\xfa'\x01\xff\xf0\xff\xfa\x18\x01\xff\xf0")%r(NCP,1B,"\xf
+SF:f\xfd\x18\xff\xfd\x20\xff\xfd'\xff\xfa\x20\x01\xff\xf0\xff\xfa'\x01\xff
+SF:\xf0\xff\xfa\x18\x01\xff\xf0");
+MAC Address: 0E:EA:14:39:D1:D6 (Unknown)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: phone|general purpose
+Running (JUST GUESSING): Google Android 12.X|10.X|11.X (87%), Linux 5.X|3.X|4.X|2.6.X (87%)
+OS CPE: cpe:/o:google:android:12 cpe:/o:linux:linux_kernel:5.4 cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5 cpe:/o:google:android:10 cpe:/o:google:android:11 cpe:/o:linux:linux_kernel:2.6
+Aggressive OS guesses: Android 12 (Linux 5.4) (87%), Linux 3.10 - 4.11 (87%), Linux 3.2 - 4.14 (87%), Linux 4.15 - 5.19 (87%), Android 10 - 12 (Linux 4.14 - 4.19) (87%), Linux 2.6.32 - 3.10 (86%), Android 10 - 11 (Linux 4.14) (86%), Linux 4.15 (86%), Linux 5.10 - 5.19 (86%), Ubiquiti Dream Machine Pro gateway (Linux 4.19) (86%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+
+Nmap scan report for zangji-3b.localdomain (192.168.5.123)
+Host is up (0.00013s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 10.0p2 Debian 7+deb13u4 (protocol 2.0)
+Aggressive OS guesses: Linux 5.0 - 6.2 (97%), Linux 2.6.32 (96%), Linux 5.7 (95%), Linux 4.10 (95%), Linux 5.10 - 5.11 (95%), Linux 3.10 (94%), Linux 3.7 - 4.19 (93%), Linux 5.4 - 5.8 (93%), Linux 5.10 (93%), Linux 3.7 (93%)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.95%E=4%D=9/27%OT=22%CT=1%CU=35018%PV=Y%DS=0%DC=L%G=Y%TM=6AB9985
+OS:1%P=aarch64-unknown-linux-gnu)SEQ(SP=105%GCD=1%ISR=108%TI=Z%CI=Z%II=I%TS
+OS:=21)SEQ(SP=105%GCD=1%ISR=10D%TI=Z%CI=Z%II=I%TS=22)SEQ(SP=105%GCD=1%ISR=1
+OS:0E%TI=Z%CI=Z%II=I%TS=21)SEQ(SP=109%GCD=1%ISR=10A%TI=Z%CI=Z%II=I%TS=21)SE
+OS:Q(SP=FE%GCD=1%ISR=107%TI=Z%CI=Z%II=I%TS=21)OPS(O1=MFFD7ST11NW7%O2=MFFD7S
+OS:T11NW7%O3=MFFD7NNT11NW7%O4=MFFD7ST11NW7%O5=MFFD7ST11NW7%O6=MFFD7ST11)WIN
+OS:(W1=FFCB%W2=FFCB%W3=FFCB%W4=FFCB%W5=FFCB%W6=FFCB)ECN(R=Y%DF=Y%T=40%W=FFD
+OS:7%O=MFFD7NNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3
+OS:(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=
+OS:Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=
+OS:Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%R
+OS:IPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+Network Distance: 0 hops
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Sep 27 15:27:29 2026 -- 256 IP addresses (26 hosts up) scanned in 400.65 seconds
