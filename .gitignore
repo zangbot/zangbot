@@ -28,6 +28,10 @@ ENV/
 *.swo
 *~
 .DS_Store
+**/.DS_Store
+__MACOSX/
+**/__MACOSX/
+*.zip
 .pytest_cache/
 .coverage
 htmlcov/
