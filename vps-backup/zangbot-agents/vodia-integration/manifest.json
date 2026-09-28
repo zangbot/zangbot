@@ -1,0 +1,59 @@
+{
+  "name": "Zangbot Infrastructure Router",
+  "identifier": "zangbotinfrastructurerouter",
+  "version": "1.0.0",
+  "description": "Routes Vodia PBX events (extension state, call events, queue alerts) to Zangbot decision ticket system on Hostinger VPS",
+  "author": "Zangetsu / Zangbot",
+  "license": "MIT",
+  
+  "integration": {
+    "displayName": "Zangbot Infrastructure Router",
+    "type": "webhook",
+    "pathPrefix": "/",
+    "webhookEndpoint": "webhook/vodia"
+  },
+  
+  "routing": {
+    "targetUrl": "http://72.62.97.23:8001/webhook/vodia",
+    "method": "POST",
+    "contentType": "application/json",
+    "timeout": 10000,
+    "retryAttempts": 3,
+    "retryDelay": 1000
+  },
+  
+  "events": [
+    "extension_state_changed",
+    "extension_offline",
+    "extension_online",
+    "call_started",
+    "call_ended",
+    "queue_event",
+    "ivr_event"
+  ],
+  
+  "features": {
+    "webhooks": true,
+    "ui": true,
+    "backend": true,
+    "healthCheck": true
+  },
+  
+  "requirements": {
+    "vodia_version": "v70+",
+    "api_enabled": true,
+    "network": "outbound HTTP to 72.62.97.23:8001"
+  },
+  
+  "healthCheck": {
+    "url": "http://72.62.97.23:8001/health",
+    "interval": 300000,
+    "timeout": 5000
+  },
+  
+  "documentation": {
+    "setup": "Configure in Vodia Settings → System → Integrations",
+    "testing": "Trigger an extension state change to test webhook delivery",
+    "logs": "Monitor via: journalctl -u zangbot-router -f on Hostinger VPS"
+  }
+}

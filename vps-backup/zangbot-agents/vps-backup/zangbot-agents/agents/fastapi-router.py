@@ -21,17 +21,12 @@ from pydantic import BaseModel
 from typing import Optional
 import json
 import uuid
-import sys
-from pathlib import Path
 from datetime import datetime
 
-app = FastAPI(title="Zangbot Router", version="0.2.0")
+app = FastAPI(title="Zangbot Router", version="0.1.0")
 
 # In-memory ticket store (upgrade to DB for production)
 tickets = {}
-
-# RAG system — loaded once at startup
-_rag_collection = None
 
 # Event schemas
 class WebhookPayload(BaseModel):
@@ -53,24 +48,11 @@ class ApprovalPayload(BaseModel):
 @app.on_event("startup")
 async def startup():
     """Initialize RAG system on startup."""
-    global _rag_collection
-    print("Zangbot Router starting...")
-    try:
-        import chromadb
-        from chromadb.utils.embedding_functions import DefaultEmbeddingFunction
-        db_path = Path(__file__).parent.parent / "rag" / "chroma_db"
-        if db_path.exists():
-            client = chromadb.PersistentClient(path=str(db_path))
-            _rag_collection = client.get_or_create_collection(
-                name="zangbot_infrastructure",
-                metadata={"hnsw:space": "cosine"},
-                embedding_function=DefaultEmbeddingFunction(),
-            )
-            print(f"RAG loaded - {_rag_collection.count()} chunks ready")
-        else:
-            print(f"RAG db not found at {db_path} - run rag/vector-db-init.py first")
-    except Exception as e:
-        print(f"RAG init failed (non-fatal): {e}")
+    print("🚀 Zangbot Router starting...")
+    # TODO: Load RAG system
+    # from rag.vector-db-init import ZangbotRAG
+    # rag = ZangbotRAG()
+    # rag.run()
 
 
 @app.get("/health")
@@ -155,29 +137,20 @@ async def webhook_hostinger(payload: WebhookPayload):
 @app.post("/query")
 async def query_rag(payload: QueryPayload):
     """RAG-backed question about infrastructure."""
-    print(f"Query: {payload.question}")
-
-    if _rag_collection is None:
-        return {
-            "question": payload.question,
-            "error": "RAG not loaded - run rag/vector-db-init.py on VPS first",
-            "results": []
-        }
-
-    results = _rag_collection.query(query_texts=[payload.question], n_results=3)
-    formatted = []
-    if results and results["documents"][0]:
-        for doc, meta in zip(results["documents"][0], results["metadatas"][0]):
-            formatted.append({
-                "source":   meta.get("source", "unknown"),
-                "category": meta.get("category", "unknown"),
-                "snippet":  doc[:500],
-            })
-
+    print(f"❓ Query: {payload.question}")
+    
+    # TODO: Wire up RAG system
+    # rag_results = rag.query(payload.question)
+    
     return {
         "question": payload.question,
-        "results":  formatted,
-        "count":    len(formatted),
+        "results": [
+            {
+                "source": "reference-guides/unifi/UNIFI-REFERENCE.md",
+                "snippet": "[TODO: RAG embedding results]",
+                "relevance": 0.85
+            }
+        ]
     }
 
 
