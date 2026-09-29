@@ -1,0 +1,136 @@
+---
+router:
+  version: 1
+  description: Mac Studio + Hostinger distributed inference router
+  
+inference_backends:
+  local:
+    name: Mac Studio Ollama
+    endpoint: http://localhost:11434/v1
+    models:
+      - id: qwen2.5:7b
+        latency_ms: 1000
+        use_case: primary drafting, planning, logs analysis
+        context_limit: 32000
+      - id: phi3:latest
+        latency_ms: 15000
+        use_case: fallback, ultra-lightweight
+        context_limit: 4096
+    timeout_s: 30
+    
+  claude:
+    name: Claude API (Anthropic)
+    endpoint: https://api.anthropic.com/v1
+    models:
+      - id: claude-sonnet-4-6
+        latency_ms: 3000
+        use_case: complex reasoning, strategy, design
+        context_limit: 200000
+    timeout_s: 60
+    max_tokens_per_request: 4096
+    cost_tracking: true
+
+decision_rules:
+  - name: "Creative and writing tasks"
+    triggers:
+      keywords_any: ["write", "proposal", "email", "letter", "documentation", "compose"]
+      prompt_length_tokens: [0, 10000]
+    backend: "claude"
+    reasoning: "Claude superior at tone, voice, coherent long-form, professional writing"
+    
+  - name: "Complex reasoning and strategy (business)"
+    triggers:
+      keywords_any: ["strategy", "business", "pricing", "approach", "compete", "recommend"]
+      keywords_not: ["vlan", "vodia", "unifi", "extension", "pbx"]  # Exclude infra
+      prompt_length_tokens: [0, 10000]
+    backend: "claude"
+    reasoning: "Claude better at multi-step reasoning, long-form synthesis, business analysis"
+    
+  - name: "Code review and diffs"
+    triggers:
+      keywords_any: ["review", "diff", "refactor", "optimize"]
+    backend: "local"
+    reasoning: "Qwen strong on code; use for first-pass analysis"
+    
+  - name: "Infrastructure troubleshooting"
+    triggers:
+      keywords_any: ["vodia", "unifi", "vlan", "sip", "pbx", "extension"]
+    backend: "local"
+    reasoning: "Infrastructure knowledge base cached locally, fast feedback loop"
+    
+  - name: "Planning and drafting (infrastructure)"
+    triggers:
+      keywords_any: ["plan", "vlan", "vodia", "unifi", "network"]
+      prompt_length_tokens: [0, 500]
+    backend: "local"
+    reasoning: "Start locally with infrastructure focus, review, then escalate to Claude"
+    post_action: "USER_REVIEW_REQUIRED"
+    
+  - name: "Quick ops (logs, diffs, lists)"
+    triggers:
+      prompt_length_tokens: [0, 300]
+      keywords_all: ["show", "log"]
+    backend: "local"
+    reasoning: "Fast turnaround, free, Qwen handles structure well"
+    
+  - name: "Fallback (uncertainty)"
+    triggers:
+      match: "none"
+    backend: "local"
+    timeout_s: 3
+    fallback_backend: "claude"
+    reasoning: "Try local first (fast, free), escalate to Claude if timeout"
+
+escalation:
+  enabled: true
+  trigger: "user_review_request"
+  workflow:
+    - step: 1
+      action: "draft_locally"
+      backend: "local"
+      description: "Generate draft on Qwen2.5:7b"
+      
+    - step: 2
+      action: "user_review"
+      description: "You review draft locally, suggest changes"
+      
+    - step: 3
+      action: "refine_locally"
+      backend: "local"
+      description: "Apply feedback, re-draft on local if needed"
+      
+    - step: 4
+      action: "escalate_to_claude"
+      backend: "claude"
+      description: "Send finalized plan/draft to Claude for complex reasoning or polish"
+      trigger_conditions:
+        - "user_says: complex reasoning"
+        - "user_says: strategy"
+        - "user_says: final review"
+
+cost_control:
+  enabled: true
+  local_queries_target: "70%"
+  claude_max_weekly_tokens: 50000
+  alert_threshold: "80%"
+  
+logging:
+  enabled: true
+  log_file: "~/.zangbot/router-decisions.log"
+  format: "json"
+
+preflight:
+  - verify_local_endpoint_reachable: true
+    timeout_s: 2
+  - verify_claude_api_key: true
+  - check_token_budget: true
+  - check_local_model_loaded: true
+
+feedback:
+  enabled: true
+  ask_user: "Was that response helpful?"
+  track_metrics:
+    - local_quality_score
+    - claude_quality_score
+    - latency_satisfaction
+  use_for: "router tuning"

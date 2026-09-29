@@ -1,0 +1,76 @@
+# Nmap 7.95 scan initiated Sun Sep 27 15:15:44 2026 as: nmap -sn -oN /home/zangetsu/scans/20260927-1515/01-hosts.txt 192.168.5.0/24
+Nmap scan report for unifi.localdomain (192.168.5.1)
+Host is up (0.0089s latency).
+MAC Address: 0E:EA:14:39:D1:D6 (Unknown)
+Nmap scan report for 192.168.5.2
+Host is up (0.019s latency).
+MAC Address: 9C:05:D6:E5:91:69 (Ubiquiti)
+Nmap scan report for 192.168.5.3
+Host is up (0.012s latency).
+MAC Address: 28:70:4E:5D:FE:21 (Ubiquiti)
+Nmap scan report for 192.168.5.5
+Host is up (0.014s latency).
+MAC Address: 04:7C:16:5A:94:6F (Micro-Star Intl)
+Nmap scan report for 192.168.5.10
+Host is up (0.017s latency).
+MAC Address: BC:89:C1:E2:C0:42 (Unknown)
+Nmap scan report for 192.168.5.14
+Host is up (0.014s latency).
+MAC Address: 6C:1F:F7:16:DE:F6 (Ugreen Group Limited)
+Nmap scan report for 192.168.5.15
+Host is up (0.0071s latency).
+MAC Address: 90:09:D0:46:EE:BF (Synology Incorporated)
+Nmap scan report for 192.168.5.16
+Host is up (0.014s latency).
+MAC Address: 90:09:D0:46:EE:C0 (Synology Incorporated)
+Nmap scan report for 192.168.5.102
+Host is up (0.21s latency).
+MAC Address: 18:0B:1B:73:D0:7D (Unknown)
+Nmap scan report for 192.168.5.110
+Host is up (0.15s latency).
+MAC Address: DC:DA:0C:53:55:00 (Espressif)
+Nmap scan report for 192.168.5.111
+Host is up (0.14s latency).
+MAC Address: DC:62:79:55:10:D3 (Unknown)
+Nmap scan report for Zangpachi.localdomain (192.168.5.116)
+Host is up (0.13s latency).
+MAC Address: 2C:CF:67:EA:08:3A (Raspberry Pi (Trading))
+Nmap scan report for Anker.localdomain (192.168.5.117)
+Host is up (0.14s latency).
+MAC Address: 7C:E9:13:51:E1:83 (Unknown)
+Nmap scan report for amazon-86d8be84b4969aa9.localdomain (192.168.5.120)
+Host is up (0.24s latency).
+MAC Address: 50:99:5A:9D:F3:0D (Unknown)
+Nmap scan report for g5-flex.localdomain (192.168.5.122)
+Host is up (0.0082s latency).
+MAC Address: 1C:6A:1B:81:05:32 (Unknown)
+Nmap scan report for P125M.localdomain (192.168.5.124)
+Host is up (0.14s latency).
+MAC Address: DC:62:79:9A:53:34 (Unknown)
+Nmap scan report for Zang-phone.localdomain (192.168.5.125)
+Host is up (0.25s latency).
+MAC Address: 86:EB:8C:B9:BA:2C (Unknown)
+Nmap scan report for 192.168.5.127
+Host is up (0.24s latency).
+MAC Address: 68:13:F3:D4:7D:3C (Amazon Technologies)
+Nmap scan report for Samsung.localdomain (192.168.5.128)
+Host is up (0.15s latency).
+MAC Address: 04:E4:B6:AF:23:A2 (Samsung Electronics)
+Nmap scan report for L535.localdomain (192.168.5.129)
+Host is up (0.14s latency).
+MAC Address: B0:19:21:8A:35:C5 (Unknown)
+Nmap scan report for amazon-fdebc6b2d.localdomain (192.168.5.141)
+Host is up (0.023s latency).
+MAC Address: 00:F3:61:25:4F:9B (Amazon Technologies)
+Nmap scan report for 192.168.5.146
+Host is up (0.13s latency).
+MAC Address: B0:19:21:8A:34:30 (Unknown)
+Nmap scan report for Amazon-Smart-Thermostat.localdomain (192.168.5.147)
+Host is up (0.14s latency).
+MAC Address: 40:89:C6:51:85:48 (Unknown)
+Nmap scan report for 192.168.5.231
+Host is up (0.014s latency).
+MAC Address: 0E:EA:14:39:D1:D6 (Unknown)
+Nmap scan report for zangji-3b.localdomain (192.168.5.123)
+Host is up.
+# Nmap done at Sun Sep 27 15:15:50 2026 -- 256 IP addresses (25 hosts up) scanned in 6.40 seconds

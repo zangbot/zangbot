@@ -1,0 +1,12 @@
+=== SYSTEM ===
+zangji-3b
+ 15:15:44 up 7 min,  1 user,  load average: 0.27, 0.19, 0.13
+    inet 192.168.5.123/24 brd 192.168.5.255 scope global dynamic noprefixroute wlan0
+    inet 100.110.187.18/32 scope global tailscale0
+100.110.187.18  zangji-3b       jdgnothing@  linux    -                           
+100.79.154.28   jds-mac-studio  jdgnothing@  macOS    -                           
+100.109.228.50  raspberrypi     jdgnothing@  linux    offline, last seen 1d ago   
+100.68.175.28   zangetsu-42023  jdgnothing@  windows  -                           
+100.76.175.118  zangetsu-z790   jdgnothing@  linux    offline, last seen 10d ago  
+100.86.69.52    zangetsulv-nas  jdgnothing@  linux    -                           
+100.77.44.14    zangpachi       jdgnothing@  linux    -                           
